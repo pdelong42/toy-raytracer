@@ -39,8 +39,29 @@
 (def eye (Point. 0 0 200))
 
 (defn tracer
+
+   "The original function printed to the file whose name is passed in as the
+    first arg.  However, I can't remember the file I/O functions in
+    Clojure/Java at the moment, so I'm just going to send the output to stdout
+    for now.  Also, color-at isn't yet defined, so we're just printing
+    coordinates as a sanity check until that changes."
+
    [pathname & {:keys [res] :or {res 1}}]
-   res  )
+   (printf "P2 %s %s 255\n" (* res 100) (* res 100))
+   (let
+      [delta (/ res)]
+      (loop
+         [y -50]
+         (loop
+            [x -50]
+            ;(print (color-at x y))
+            (println [x y])
+            (if-not
+               (< (- 50 x) delta)
+               (recur (+ x delta))  )  )
+         (if-not
+            (< (- 50 y) delta)
+            (recur (+ y delta))  )  )  )  )
 
 (defn -main
    [& args]
