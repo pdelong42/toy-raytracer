@@ -32,6 +32,16 @@
                   (/ (+ (- b) discrt) (* 2 a))
                   (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
 
+(defrecord Surface [color])
+
+(def ^:dynamic *world* nil)
+
+(def eye (Point. 0 0 200))
+
+(defn tracer
+   [pathname & {:keys [res] :or {res 1}}]
+   res  )
+
 (defn -main
    [& args]
    ;; work around dangerous default behaviour in Clojure
