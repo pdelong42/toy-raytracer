@@ -52,12 +52,12 @@
          sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
-      (doseq [x sideseq y sideseq]
+      (for [x sideseq y sideseq]
          ;(print (color-at x y))  )  )  )
-         (println [x y])  )  )  )
+         [x y]  )  )  )
 
 (defn -main
    [& args]
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
-   (println "Hello, World!"))
+   (dorun (map println (tracer nil)))  )
