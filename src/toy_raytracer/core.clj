@@ -47,11 +47,12 @@
     coordinates as a sanity check until that changes."
 
    [pathname & {:keys [res] :or {res 1}}]
-   (printf "P2 %.0f %.0f 255\n" (* res 100) (* res 100))
    (let
       [  delta (/ res)
-         side (range -50 50 delta)  ]
-      (doseq [x side y side]
+         sideseq (range -50 50 delta)
+         sidelen (count sideseq)  ]
+      (printf "P2 %d %d 255\n" sidelen sidelen)
+      (doseq [x sideseq y sideseq]
          ;(print (color-at x y))  )  )  )
          (println [x y])  )  )  )
 
