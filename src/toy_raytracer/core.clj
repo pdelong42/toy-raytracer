@@ -47,21 +47,13 @@
     coordinates as a sanity check until that changes."
 
    [pathname & {:keys [res] :or {res 1}}]
-   (printf "P2 %s %s 255\n" (* res 100) (* res 100))
+   (printf "P2 %.0f %.0f 255\n" (* res 100) (* res 100))
    (let
-      [delta (/ res)]
-      (loop
-         [y -50]
-         (loop
-            [x -50]
-            ;(print (color-at x y))
-            (println [x y])
-            (if-not
-               (< (- 50 x) delta)
-               (recur (+ x delta))  )  )
-         (if-not
-            (< (- 50 y) delta)
-            (recur (+ y delta))  )  )  )  )
+      [  delta (/ res)
+         side (range -50 50 delta)  ]
+      (doseq [x side y side]
+         ;(print (color-at x y))  )  )  )
+         (println [x y])  )  )  )
 
 (defn -main
    [& args]
