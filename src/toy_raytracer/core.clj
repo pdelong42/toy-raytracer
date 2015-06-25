@@ -38,6 +38,27 @@
 
 (def eye (Point. 0 0 200))
 
+(defn sendray
+   [pt xr yr zr]
+   0  )
+;   (let
+;      [  [s intersection]
+;         (first-hit pt xr yr zr)  ]
+;      (if
+;         s
+;         (* (lambert intersection xr yr zr) (surface-color s))
+;         0  )  )  )
+
+(defn color-at
+   [x y]
+   (let
+      [  [xr yr zr]
+         (unit-vector
+            (- x (:x eye))
+            (- y (:y eye))
+            (- 0 (:z eye))  )  ]
+      (Math/round (* (sendray eye xr yr zr) 255))  )  )
+
 (defn tracer
 
    "The original function printed to the file whose name is passed in as the
@@ -53,7 +74,7 @@
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (for [x sideseq y sideseq]
-         ;(print (color-at x y))  )  )  )
+         ;(color-at x y)  )  )  )
          [x y]  )  )  )
 
 (defn -main
