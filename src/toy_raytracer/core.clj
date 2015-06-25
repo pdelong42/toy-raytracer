@@ -49,7 +49,7 @@
    [pathname & {:keys [res] :or {res 1}}]
    (let
       [  delta (/ res)
-         sideseq (range -50 50 delta)
+         sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (doseq [x sideseq y sideseq]
