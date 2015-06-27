@@ -2,13 +2,17 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
+(deftype Point [x y z])
+
+(deftype Surface [color])
+
+;(deftype Sphere [radius center] Surface)
+
 (defn square [x] (* x x))
 
 (defn mag [v] (Math/sqrt (reduce + (map square v))))
 
 (defn unit-vector [v] (map #(/ % (mag v)) v))
-
-(defrecord Point [x y z])
 
 (defn distance
    [p1 p2]
@@ -32,32 +36,9 @@
                   (/ (+ (- b) discrt) (* 2 a))
                   (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
 
-(defrecord Surface [color])
-
 (def ^:dynamic *world* nil)
 
 (def eye (Point. 0 0 200))
-
-(defn sendray
-   [pt xr yr zr]
-   0  )
-;   (let
-;      [  [s intersection]
-;         (first-hit pt xr yr zr)  ]
-;      (if
-;         s
-;         (* (lambert intersection xr yr zr) (surface-color s))
-;         0  )  )  )
-
-(defn color-at
-   [x y]
-   (let
-      [  [xr yr zr]
-         (unit-vector
-            (- x (:x eye))
-            (- y (:y eye))
-            (- 0 (:z eye))  )  ]
-      (Math/round (* (sendray eye xr yr zr) 255))  )  )
 
 (defn tracer
 
