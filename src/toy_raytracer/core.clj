@@ -2,11 +2,29 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
-(deftype Point [x y z])
+(defrecord Point [x y z])
 
-(deftype Surface [color])
+(defrecord Surface [color])
 
-;(deftype Sphere [radius center] Surface)
+(defprotocol SurfaceProperties
+   (color [_])  )
+
+(def surface-properties {:color (fn [surface] (:color surface))})
+
+(extend Surface SurfaceProperties surface-properties)
+
+(defrecord Sphere [surface radius center])
+
+(defprotocol SphereProperties
+   (radius [_])
+   (center [_])  )
+
+(def sphere-properties
+   (merge surface-properties
+      {  :radius (fn [sphere] (:radius sphere))
+         :center (fn [sphere] (:center sphere))  }  )  )
+
+(extend Sphere SphereProperties sphere-properties)
 
 (defn square [x] (* x x))
 
