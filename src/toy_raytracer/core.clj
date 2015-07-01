@@ -2,6 +2,34 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
+(defn square [x] (* x x))
+
+(defn mag [v] (Math/sqrt (reduce + (map square v))))
+
+(defn unit-vector [v] (map #(/ % (mag v)) v))
+
+(defn distance
+   [p1 p2]
+   (mag
+      [  (- (:x p1) (:x p2))
+         (- (:y p1) (:y p2))
+         (- (:z p1) (:z p2))  ]  )  )
+
+(defn minroot
+   [a b c]
+   (if
+      (zero? a)
+      (/ (- c) b)
+      (let
+         [  disc (- (square b) (* 4 a c))  ]
+         (if-not
+            (> disc 0)
+            (let
+               [  discrt (Math/sqrt disc)  ]
+               (min
+                  (/ (+ (- b) discrt) (* 2 a))
+                  (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
+
 (defrecord Point [x y z])
 
 (defprotocol PointProperties
@@ -46,33 +74,16 @@
    SphereProperties
    sphere-properties  )
 
-(defn square [x] (* x x))
+(defmulti normal type)
 
-(defn mag [v] (Math/sqrt (reduce + (map square v))))
-
-(defn unit-vector [v] (map #(/ % (mag v)) v))
-
-(defn distance
-   [p1 p2]
-   (mag
-      [  (- (:x p1) (:x p2))
-         (- (:y p1) (:y p2))
-         (- (:z p1) (:z p2))  ]  )  )
-
-(defn minroot
-   [a b c]
-   (if
-      (zero? a)
-      (/ (- c) b)
-      (let
-         [  disc (- (square b) (* 4 a c))  ]
-         (if-not
-            (> disc 0)
-            (let
-               [  discrt (Math/sqrt disc)  ]
-               (min
-                  (/ (+ (- b) discrt) (* 2 a))
-                  (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
+(defmethod normal toy_raytracer.core.Sphere
+   [sphere point]
+   (let
+      [c (center sphere)]
+      (unit-vector
+         (- (x c) (x point))
+         (- (y c) (y point))
+         (- (z c) (z point))  )  )  )
 
 (def ^:dynamic *world* nil)
 
