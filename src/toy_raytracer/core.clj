@@ -4,27 +4,46 @@
 
 (defrecord Point [x y z])
 
+(defprotocol PointProperties
+   (x [_])
+   (y [_])
+   (z [_])  )
+
+(extend Point PointProperties
+   {  :x (fn [point] (:x point))
+      :y (fn [point] (:y point))
+      :z (fn [point] (:z point))  }  )
+
 (defrecord Surface [color])
 
 (defprotocol SurfaceProperties
-   (color [_])  )
+   (to-surface [_])
+   (color      [_])  )
 
-(def surface-properties {:color (fn [surface] (:color surface))})
+(def surface-properties
+   {  :to-surface (fn [surface]         surface)
+      :color      (fn [surface] (:color surface))  }  )
 
 (extend Surface SurfaceProperties surface-properties)
 
 (defrecord Sphere [surface radius center])
 
 (defprotocol SphereProperties
-   (radius [_])
-   (center [_])  )
+   (to-sphere [_])
+   (radius    [_])
+   (center    [_])  )
 
 (def sphere-properties
-   (merge surface-properties
-      {  :radius (fn [sphere] (:radius sphere))
-         :center (fn [sphere] (:center sphere))  }  )  )
+   {  :to-sphere  (fn [sphere] (         sphere))
+      :radius     (fn [sphere] (:radius  sphere))
+      :center     (fn [sphere] (:center  sphere))  }  )
 
-(extend Sphere SphereProperties sphere-properties)
+(extend Sphere
+   SurfaceProperties
+   (merge surface-properties
+      {  :to-surface (fn [sphere] (:surface sphere))  }  )
+   SphereProperties
+   sphere-properties  )
 
 (defn square [x] (* x x))
 
