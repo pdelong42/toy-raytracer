@@ -34,14 +34,15 @@
    (center    [_])  )
 
 (def sphere-properties
-   {  :to-sphere  (fn [sphere] (         sphere))
-      :radius     (fn [sphere] (:radius  sphere))
-      :center     (fn [sphere] (:center  sphere))  }  )
+   {  :to-sphere  (fn [sphere]          sphere)
+      :radius     (fn [sphere] (:radius sphere))
+      :center     (fn [sphere] (:center sphere))  }  )
 
 (extend Sphere
    SurfaceProperties
    (merge surface-properties
-      {  :to-surface (fn [sphere] (:surface sphere))  }  )
+      {  :to-surface (fn [sphere] (:surface sphere))
+         :color      (fn [sphere] (color (to-surface sphere)))  }  )
    SphereProperties
    sphere-properties  )
 
