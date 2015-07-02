@@ -4,9 +4,9 @@
 
 (defn square [x] (* x x))
 
-(defn mag [v] (Math/sqrt (reduce + (map square v))))
+(defn magnitude [v] (Math/sqrt (reduce + (map square v))))
 
-(defn unit-vector [v] (map #(/ % (mag v)) v))
+(defn unit-vector [v] (map #(/ % (magnitude v)) v))
 
 (defn minroot
    [a b c]
@@ -67,23 +67,21 @@
    SphereProperties
    sphere-properties  )
 
+(defn displacement
+   [p1 p2]
+   [  (- (x p1) (x p2))
+      (- (y p1) (y p2))
+      (- (z p1) (z p2))  ]  )
+
 (defmulti normal type)
 
 (defmethod normal toy_raytracer.core.Sphere
    [sphere point]
-   (let
-      [c (center sphere)]
-      (unit-vector
-         (- (x c) (x point))
-         (- (y c) (y point))
-         (- (z c) (z point))  )  )  )
+   (unit-vector (displacement point (center sphere)))  )
 
 (defn distance
    [p1 p2]
-   (mag
-      [  (- (x p1) (x p2))
-         (- (y p1) (y p2))
-         (- (z p1) (z p2))  ]  )  )
+   (magnitude (displacement p1 p2))  )
 
 (def ^:dynamic *world* nil)
 
