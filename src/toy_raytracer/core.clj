@@ -4,7 +4,11 @@
 
 (defn square [x] (* x x))
 
-(defn magnitude [v] (Math/sqrt (reduce + (map square v))))
+; There has to be a better name for this.  I'll have to search for something
+; appropriate in my math books later.
+(defn mag2 [v] (reduce + (map square v)))
+
+(defn magnitude [x] (Math/sqrt (mag2 x)))
 
 (defn unit-vector [v] (map #(/ % (magnitude v)) v))
 
