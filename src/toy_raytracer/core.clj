@@ -77,7 +77,7 @@
 
 (defmethod normal toy_raytracer.core.Sphere
    [sphere point]
-   (unit-vector (displacement point (center sphere)))  )
+   (unit-vector (displacement (center sphere) point))  )
 
 (defn distance
    [p1 p2]
