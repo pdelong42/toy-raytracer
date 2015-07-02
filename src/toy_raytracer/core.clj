@@ -73,9 +73,10 @@
       (- (y p1) (y p2))
       (- (z p1) (z p2))  ]  )
 
-(defmulti normal type)
+(defmulti normal
+   (fn [sphere point] (type sphere))  )
 
-(defmethod normal toy_raytracer.core.Sphere
+(defmethod normal Sphere
    [sphere point]
    (unit-vector (displacement (center sphere) point))  )
 
