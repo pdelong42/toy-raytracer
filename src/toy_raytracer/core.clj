@@ -83,8 +83,6 @@
    [p1 p2]
    (magnitude (displacement p1 p2))  )
 
-(def ^:dynamic *world* nil)
-
 (def eye (Point. 0 0 200))
 
 (defn tracer
