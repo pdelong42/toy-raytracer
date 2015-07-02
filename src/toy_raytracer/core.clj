@@ -84,6 +84,9 @@
    [sphere point]
    (unit-vector (displacement (center sphere) point))  )
 
+(defmethod intersect
+   (fn [surface point xr yr zr] (type surface))  )
+
 (def eye (Point. 0 0 200))
 
 (defn tracer
