@@ -78,7 +78,7 @@
    (magnitude (displacement p1 p2))  )
 
 (defmulti normal
-   (fn [sphere point] (type sphere))  )
+   (fn [surface point] (type surface))  )
 
 (defmethod normal Sphere
    [sphere point]
