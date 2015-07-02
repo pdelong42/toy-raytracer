@@ -73,16 +73,16 @@
       (- (y p1) (y p2))
       (- (z p1) (z p2))  ]  )
 
+(defn distance
+   [p1 p2]
+   (magnitude (displacement p1 p2))  )
+
 (defmulti normal
    (fn [sphere point] (type sphere))  )
 
 (defmethod normal Sphere
    [sphere point]
    (unit-vector (displacement (center sphere) point))  )
-
-(defn distance
-   [p1 p2]
-   (magnitude (displacement p1 p2))  )
 
 (def eye (Point. 0 0 200))
 
