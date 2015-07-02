@@ -8,13 +8,6 @@
 
 (defn unit-vector [v] (map #(/ % (mag v)) v))
 
-(defn distance
-   [p1 p2]
-   (mag
-      [  (- (:x p1) (:x p2))
-         (- (:y p1) (:y p2))
-         (- (:z p1) (:z p2))  ]  )  )
-
 (defn minroot
    [a b c]
    (if
@@ -84,6 +77,13 @@
          (- (x c) (x point))
          (- (y c) (y point))
          (- (z c) (z point))  )  )  )
+
+(defn distance
+   [p1 p2]
+   (mag
+      [  (- (x p1) (x p2))
+         (- (y p1) (y p2))
+         (- (z p1) (z p2))  ]  )  )
 
 (def ^:dynamic *world* nil)
 
