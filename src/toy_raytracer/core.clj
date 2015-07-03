@@ -2,13 +2,9 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
-(defn square [x] (* x x))
+(defn inner [u v] (reduce + (map * u v)))
 
-; There has to be a better name for this.  I'll have to search for something
-; appropriate in my math books later.
-(defn mag2 [v] (reduce + (map square v)))
-
-(defn magnitude [x] (Math/sqrt (mag2 x)))
+(defn magnitude [v] (Math/sqrt (inner v v)))
 
 (defn unit-vector [v] (map #(/ % (magnitude v)) v))
 
@@ -18,7 +14,7 @@
       (zero? a)
       (/ (- c) b)
       (let
-         [  disc (- (square b) (* 4 a c))  ]
+         [  disc (- (* b b) (* 4 a c))  ]
          (if-not
             (> disc 0)
             (let
