@@ -20,7 +20,7 @@
       (zero? a)
       (/ (- c) b)
       (let
-         [  disc (- (* b b) (* 4 a c))  ]
+         [  disc (- (square b) (* 4 a c))  ]
          (if-not
             (> disc 0)
             (let
