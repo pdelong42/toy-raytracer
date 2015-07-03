@@ -4,7 +4,13 @@
 
 (defn inner [u v] (reduce + (map * u v)))
 
-(defn magnitude [v] (Math/sqrt (inner v v)))
+(defn square [x]
+   (if
+      (number? x)
+      (* x x)
+      (inner x x)  )  )
+
+(defn magnitude [v] (Math/sqrt (square v)))
 
 (defn unit-vector [v] (map #(/ % (magnitude v)) v))
 
