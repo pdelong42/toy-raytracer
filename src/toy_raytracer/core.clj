@@ -91,7 +91,20 @@
    (unit-vector (displacement (center sphere) point))  )
 
 (defmulti intersect
-   (fn [surface point xr yr zr] (type surface))  )
+   (fn [surface point ray] (type surface))  )
+
+(defmethod intersect Sphere
+   [sphere point ray]
+   (let
+      [  foo (displacement point (center sphere))  ; I think this might be the unit vector
+         n (minroot
+              (square ray)
+              (* 2 (+ (inner foo ray)))
+              (- (square foo) (square (radius sphere)))  )  ]
+      (if n (Point. (+ point (* n ray))))  )  )
+
+; The last line of that function is pseudocode.  It won't work as written until
+; some other structures are in place.
 
 (def eye (Point. 0 0 200))
 
