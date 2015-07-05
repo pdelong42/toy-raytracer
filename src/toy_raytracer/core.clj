@@ -93,15 +93,22 @@
 (defmulti intersect
    (fn [surface point ray] (type surface))  )
 
+; ToDo: rename "foo" to something more informative (I think this might be the
+; unit vector)
+
 (defmethod intersect Sphere
    [sphere point ray]
    (let
-      [  foo (displacement point (center sphere))  ; I think this might be the unit vector
+      [  foo (displacement point (center sphere))
          n (minroot
               (square ray)
               (* 2 (+ (inner foo ray)))
               (- (square foo) (square (radius sphere)))  )  ]
       (if n (apply ->Point (map #(+ % (* n %2)) point ray)))  )  )
+
+(defn lambert
+   [surface intersection ray]
+   (max 0 (inner ray (normal surface intersection)))  )
 
 (def eye (->Point 0 0 200))
 
