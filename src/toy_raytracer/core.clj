@@ -125,6 +125,15 @@
                (recur s h d (first slist) (rest slist))
                [closest hit]  )  )  )  )  )
 
+(defn sendray
+   [point ray]
+   (if-let
+      [  [s intersection]
+         (first-hit point ray)  ]
+      (* (lambert intersection ray)
+         (color s)  )
+      0  )  )
+
 (def eye (->Point 0 0 200))
 
 (defn tracer
