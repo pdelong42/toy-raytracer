@@ -110,6 +110,21 @@
    [surface intersection ray]
    (max 0 (inner ray (normal surface intersection)))  )
 
+(defn first-hit
+   [world point ray]
+   (loop
+      [  closest nil
+         hit     nil
+         dist    nil
+         s       (first world)
+         slist   (rest  world)  ]
+      (if-let [h (intersect s point ray)]
+         (if-let [d (distance h point)]
+            (when
+               (or (nil? dist) (< d dist))
+               (recur s h d (first slist) (rest slist))  )  )  )
+      [closest hit]  )  )
+
 (def eye (->Point 0 0 200))
 
 (defn tracer
