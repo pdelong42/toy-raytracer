@@ -136,6 +136,12 @@
 
 (def eye (->Point 0 0 200))
 
+(defn color-at
+   [x y]
+   (Math/round
+      (* (sendray eye
+            (unit-vector (displacement (->Point x y 0) eye))) 255  )  )  )
+
 (defn tracer
 
    "The original function printed to the file whose name is passed in as the
