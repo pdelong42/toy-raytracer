@@ -120,10 +120,10 @@
          slist   (rest  world)  ]
       (if-let [h (intersect s point ray)]
          (if-let [d (distance h point)]
-            (when
+            (if
                (or (nil? dist) (< d dist))
-               (recur s h d (first slist) (rest slist))  )  )  )
-      [closest hit]  )  )
+               (recur s h d (first slist) (rest slist))
+               [closest hit]  )  )  )  )  )
 
 (def eye (->Point 0 0 200))
 
