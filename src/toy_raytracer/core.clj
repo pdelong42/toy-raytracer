@@ -160,12 +160,16 @@
          ;(color-at world x y)  )  )  )
          [world x y]  )  )  )
 
+(defn defsphere
+   [color radius center]
+   (->Sphere (->Surface color) radius center)  )
+
 (defn ray-test
    [& {:keys [res] :or {res 1}}]
    (tracer
-      [  (->Sphere   0 (->Point -300 -1200 200) 0.8)
-         (->Sphere -80 (->Point -150 -1200 200) 0.7)
-         (->Sphere  70 (->Point -100 -1200 200) 0.9)  ]  )  )
+      [  (defsphere 0.8   0 (->Point -300 -1200 200))
+         (defsphere 0.7 -80 (->Point -150 -1200 200))
+         (defsphere 0.9  70 (->Point -100 -1200 200))  ]  )  )
 
 (defn -main
    [& args]
