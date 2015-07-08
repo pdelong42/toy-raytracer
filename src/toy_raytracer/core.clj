@@ -126,10 +126,10 @@
                [closest hit]  )  )  )  )  )
 
 (defn sendray
-   [point ray]
+   [world point ray]
    (if-let
       [  [s intersection]
-         (first-hit point ray)  ]
+         (first-hit world point ray)  ]
       (* (lambert intersection ray)
          (color s)  )
       0  )  )
@@ -137,9 +137,9 @@
 (def eye (->Point 0 0 200))
 
 (defn color-at
-   [x y]
+   [world x y]
    (Math/round
-      (* (sendray eye
+      (* (sendray world eye
             (unit-vector (displacement (->Point x y 0) eye))) 255  )  )  )
 
 (defn tracer
@@ -150,7 +150,7 @@
     for now.  Also, color-at isn't yet defined, so we're just printing
     coordinates as a sanity check until that changes."
 
-   [pathname & {:keys [res] :or {res 1}}]
+   [world pathname & {:keys [res] :or {res 1}}]
    (let
       [  delta (/ res)
          sideseq (range -50 (+ 50 delta) delta)
@@ -158,10 +158,17 @@
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (for [x sideseq y sideseq]
          ;(color-at x y)  )  )  )
-         [x y]  )  )  )
+         [world x y]  )  )  )
+
+(defn ray-test
+   [& {:keys [res] :or {res 1}}]
+   (tracer
+      [  (->Sphere   0 (->Point -300 -1200 200) 0.8)
+         (->Sphere -80 (->Point -150 -1200 200) 0.7)
+         (->Sphere  70 (->Point -100 -1200 200) 0.9)  ]  )  )
 
 (defn -main
    [& args]
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
-   (dorun (map println (tracer nil)))  )
+   (dorun (map println (tracer nil nil)))  )
