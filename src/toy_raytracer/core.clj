@@ -24,11 +24,10 @@
 
 (defn inner
    [u v]
-   (toPoint
-      (reduce +
-         (map *
-            (fromPoint u)
-            (fromPoint v)  )  )  )  )
+   (reduce +
+      (map *
+         (fromPoint u)
+         (fromPoint v)  )  )  )
 
 (defn square [x]
    (if
