@@ -182,7 +182,8 @@
    (tracer
       [  (defsphere 0.8   0 (->Point -300 -1200 200))
          (defsphere 0.7 -80 (->Point -150 -1200 200))
-         (defsphere 0.9  70 (->Point -100 -1200 200))  ]  )  )
+         (defsphere 0.9  70 (->Point -100 -1200 200))  ]
+      nil  )  )
 
 (defn -main
    [& args]
