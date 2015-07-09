@@ -171,7 +171,7 @@
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (for [x sideseq y sideseq]
          ;(color-at world x y)  )  )  )
-         [world x y]  )  )  )
+         [x y]  )  )  )
 
 (defn defsphere
    [color radius center]
