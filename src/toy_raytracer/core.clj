@@ -4,6 +4,18 @@
 
 (defrecord Point [x y z])
 
+(defprotocol PointProperties
+   (x [_])
+   (y [_])
+   (z [_])  )
+
+(extend Point PointProperties
+   {  :x (fn [point] (:x point))
+      :y (fn [point] (:y point))
+      :z (fn [point] (:z point))  }  )
+
+(defn toPoint [p] (apply ->Point p))
+
 (defn fromPoint [p]
    (if
       (= Point (type p))
@@ -41,16 +53,6 @@
                (min
                   (/ (+ (- b) discrt) (* 2 a))
                   (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
-
-(defprotocol PointProperties
-   (x [_])
-   (y [_])
-   (z [_])  )
-
-(extend Point PointProperties
-   {  :x (fn [point] (:x point))
-      :y (fn [point] (:y point))
-      :z (fn [point] (:z point))  }  )
 
 (defrecord Surface [color])
 
