@@ -2,7 +2,20 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
-(defn inner [u v] (reduce + (map * u v)))
+(defrecord Point [x y z])
+
+(defn fromPoint [p]
+   (if
+      (= Point (type p))
+      (vals (seq p))
+      p  )  )
+
+(defn inner
+   [u v]
+   (reduce +
+      (map *
+         (fromPoint u)
+         (fromPoint v)  )  )  )
 
 (defn square [x]
    (if
@@ -28,8 +41,6 @@
                (min
                   (/ (+ (- b) discrt) (* 2 a))
                   (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
-
-(defrecord Point [x y z])
 
 (defprotocol PointProperties
    (x [_])
