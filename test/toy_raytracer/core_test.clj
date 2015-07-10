@@ -17,4 +17,4 @@
 
 (deftest type-of-sphere (is (= Sphere (type red-sphere))))
 
-(deftest normal-test (is (= 0.0 (- 1 (square (normal red-sphere dummy-ray))))))
+(deftest normal-test (is (zero? (- 1 (square (normal red-sphere dummy-ray))))))
