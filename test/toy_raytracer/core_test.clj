@@ -29,3 +29,5 @@
 (deftest unit-vector-test (is (unityRad? (unit-vector displacement-result))))
 
 (deftest normal-test (is (unityRad? (normal red-sphere dummy-ray))))
+
+(deftest magnitude-test (is (= 7.0 (magnitude (->Point 2 3 6)))))
