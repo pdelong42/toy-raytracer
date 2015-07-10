@@ -14,7 +14,11 @@
       :y (fn [point] (:y point))
       :z (fn [point] (:z point))  }  )
 
-(defn toPoint [p] (apply ->Point p))
+(defn toPoint [p]
+   (if
+      (= Point (type p))
+      p
+      (apply ->Point p)  )  )
 
 (defn fromPoint [p]
    (if
@@ -37,7 +41,7 @@
 
 (defn magnitude [v] (Math/sqrt (square v)))
 
-(defn unit-vector [v] (map #(/ % (magnitude v)) v))
+(defn unit-vector [v] (toPoint (map #(/ % (magnitude v)) (fromPoint v))))
 
 (defn minroot
    [a b c]
@@ -88,9 +92,10 @@
 
 (defn displacement
    [p1 p2]
-   [  (- (x p1) (x p2))
-      (- (y p1) (y p2))
-      (- (z p1) (z p2))  ]  )
+   (toPoint
+      [  (- (x p1) (x p2))
+         (- (y p1) (y p2))
+         (- (z p1) (z p2))  ]  )  )
 
 (defn distance
    [p1 p2]
