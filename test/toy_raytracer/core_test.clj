@@ -3,7 +3,7 @@
       [clojure.test       :refer :all]
       [toy-raytracer.core :refer :all]  )
    (  :import
-      [toy_raytracer.core Surface]  )  )
+      [toy_raytracer.core Sphere Surface]  )  )
 
 (deftest type-of-surface (is (= Surface (type (->Surface :red)))))
 
