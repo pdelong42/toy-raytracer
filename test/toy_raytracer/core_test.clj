@@ -22,4 +22,6 @@
 (deftest displacement-test
    (is (= displacement-result (displacement (center red-sphere) dummy-ray)))  )
 
+(deftest unit-vector-test (is (zero? (- 1 (unit-vector displacement-result)))))
+
 (deftest normal-test (is (zero? (- 1 (square (normal red-sphere dummy-ray))))))
