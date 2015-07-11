@@ -122,7 +122,11 @@
               (square ray)
               (* 2 (+ (inner foo ray)))
               (- (square foo) (square (radius sphere)))  )  ]
-      (if n (apply ->Point (map #(+ % (* n %2)) point ray)))  )  )
+      (if n
+         (toPoint
+            (map #(+ % (* n %2))
+               (fromPoint point)
+               (fromPoint ray)  )  )  )  )  )
 
 (defn lambert
    [surface intersection ray]
@@ -148,7 +152,7 @@
    (if-let
       [  [s intersection]
          (first-hit world point ray)  ]
-      (* (lambert intersection ray)
+      (* (lambert s intersection ray)
          (color s)  )
       0  )  )
 
@@ -175,8 +179,8 @@
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (for [x sideseq y sideseq]
-         ;(color-at world x y)  )  )  )
-         [x y]  )  )  )
+         (color-at world x y)  )  )  )
+         ;[x y]  )  )  )
 
 (defn defsphere
    [color radius center]
