@@ -31,3 +31,8 @@
 (deftest normal-test (is (unityRad? (normal red-sphere dummy-ray))))
 
 (deftest magnitude-test (is (= 7.0 (magnitude (->Point 2 3 6)))))
+
+(deftest distance-test (is (= 27.0 (square (distance dummy-point dummy-ray)))))
+
+(deftest intersect-test
+   (is (nil? (intersect red-sphere dummy-point dummy-ray)))  )
