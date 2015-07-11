@@ -172,7 +172,7 @@
     for now.  Also, color-at isn't yet defined, so we're just printing
     coordinates as a sanity check until that changes."
 
-   [world pathname & {:keys [res] :or {res 1}}]
+   [world & {:keys [res] :or {res 1}}]
    (let
       [  delta (/ res)
          sideseq (range -50 (+ 50 delta) delta)
@@ -180,22 +180,17 @@
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (for [x sideseq y sideseq]
          (color-at world x y)  )  )  )
-         ;[x y]  )  )  )
 
 (defn defsphere
    [color radius center]
    (->Sphere (->Surface color) radius center)  )
 
-(defn ray-test
-   [& {:keys [res] :or {res 1}}]
-   (tracer
-      [  (defsphere 0.8   0 (->Point -300 -1200 200))
-         (defsphere 0.7 -80 (->Point -150 -1200 200))
-         (defsphere 0.9  70 (->Point -100 -1200 200))  ]
-      nil  )  )
-
 (defn -main
    [& args]
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
-   (dorun (map println (tracer nil nil)))  )
+   (tracer
+      [  (defsphere 0.8   0 (->Point -300 -1200 200))
+         (defsphere 0.7 -80 (->Point -150 -1200 200))
+         (defsphere 0.9  70 (->Point -100 -1200 200))  ]
+      :res 1  )  )
