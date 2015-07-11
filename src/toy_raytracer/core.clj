@@ -164,7 +164,7 @@
       (double
          (* (sendray world eye
                (unit-vector
-                  (displacement (->Point x y 0) eye)  )) 255  )  )  )  )
+                  (displacement (->Point x y 0) eye)  )  ) 255)  )  )  )
 
 (defn tracer
 
