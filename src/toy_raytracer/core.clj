@@ -161,8 +161,10 @@
 (defn color-at
    [world x y]
    (Math/round
-      (* (sendray world eye
-            (unit-vector (displacement (->Point x y 0) eye))) 255  )  )  )
+      (double
+         (* (sendray world eye
+               (unit-vector
+                  (displacement (->Point x y 0) eye)  )) 255  )  )  )  )
 
 (defn tracer
 
@@ -190,7 +192,7 @@
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
    (tracer
-      [  (defsphere 0.8   0 (->Point -300 -1200 200))
-         (defsphere 0.7 -80 (->Point -150 -1200 200))
-         (defsphere 0.9  70 (->Point -100 -1200 200))  ]
+      [  (defsphere 0.8 200 (->Point   0 -300 -1200))
+         (defsphere 0.7 200 (->Point -80 -150 -1200))
+         (defsphere 0.9 200 (->Point  70 -100 -1200))  ]
       :res 1  )  )
