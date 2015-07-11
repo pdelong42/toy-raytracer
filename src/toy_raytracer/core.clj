@@ -111,17 +111,14 @@
 (defmulti intersect
    (fn [surface point ray] (type surface))  )
 
-; ToDo: rename "foo" to something more informative (I think this might be the
-; unit vector)
-
 (defmethod intersect Sphere
    [sphere point ray]
    (let
-      [  foo (displacement point (center sphere))
+      [  plumb (displacement point (center sphere))
          n (minroot
               (square ray)
-              (* 2 (inner foo ray))
-              (- (square foo) (square (radius sphere)))  )  ]
+              (* 2 (inner plumb ray))
+              (- (square plumb) (square (radius sphere)))  )  ]
       (if n
          (toPoint
             (map #(+ % (* n %2))
