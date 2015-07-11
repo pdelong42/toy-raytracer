@@ -1,4 +1,5 @@
 (ns toy-raytracer.core
+   (:require [clojure.string :refer [join]])
    (:import java.lang.Math)
    (:gen-class)  )
 
@@ -177,8 +178,10 @@
          sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
-      (for [x sideseq y sideseq]
-         (color-at world x y)  )  )  )
+      (print
+         (join \space
+            (for [x sideseq y sideseq]
+               (color-at world x y)  )  )  )  )  )
 
 (defn defsphere
    [color radius center]
