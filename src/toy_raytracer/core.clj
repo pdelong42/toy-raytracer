@@ -120,7 +120,7 @@
       [  foo (displacement point (center sphere))
          n (minroot
               (square ray)
-              (* 2 (+ (inner foo ray)))
+              (* 2 (inner foo ray))
               (- (square foo) (square (radius sphere)))  )  ]
       (if n
          (toPoint
