@@ -192,7 +192,15 @@
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
    (tracer
+      [  (defsphere 1.0 200 (->Point     0     0 -1200))
+         (defsphere 1.0 200 (->Point     0     0  1200))
+         (defsphere 1.0 200 (->Point     0 -1200     0))
+         (defsphere 1.0 200 (->Point     0  1200     0))
+         (defsphere 1.0 200 (->Point -1200     0     0))
+         (defsphere 1.0 200 (->Point  1200     0     0))  ]
+      :res 1  )  )
+
+(comment
       [  (defsphere 0.8 200 (->Point   0 -300 -1200))
          (defsphere 0.7 200 (->Point -80 -150 -1200))
-         (defsphere 0.9 200 (->Point  70 -100 -1200))  ]
-      :res 1  )  )
+         (defsphere 0.9 200 (->Point  70 -100 -1200))  ]  )
