@@ -197,8 +197,7 @@
          (defsphere 1.0 200 [    0 -1200     0])
          (defsphere 1.0 200 [    0  1200     0])
          (defsphere 1.0 200 [-1200     0     0])
-         (defsphere 1.0 200 [ 1200     0     0])  ]
-      :res 1  )  )
+         (defsphere 1.0 200 [ 1200     0     0])  ]  )  )
 
 (comment
       [  (defsphere 0.8 200 [  0 -300 -1200])
