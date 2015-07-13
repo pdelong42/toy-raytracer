@@ -36,3 +36,11 @@
 
 (deftest intersect-test
    (is (nil? (intersect red-sphere dummy-point dummy-ray)))  )
+
+(deftest intersect-test2
+   (is (=
+         (->Point 1000 0 0)
+         (intersect
+            (defsphere 1.0 200 (->Point 1200 0 0))
+            (->Point 0 0 0)
+            eye  )  )  )  )
