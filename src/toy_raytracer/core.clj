@@ -178,7 +178,7 @@
          sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
       (printf "P2 %d %d 255\n" sidelen sidelen)
-      (print
+      (println
          (join \space
             (for [x sideseq y sideseq]
                (color-at world x y)  )  )  )  )  )
