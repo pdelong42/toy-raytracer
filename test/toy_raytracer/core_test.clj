@@ -41,10 +41,11 @@
 
 (def pixel (->Point 0 0 0))
 
-(def basic-sphere (defsphere 1.0 100 (->Point 1200 0 0)))
+(def basic-sphere (defsphere 1 200 [0 0 1200]))
 
-(def it-answer (->Point 1000 0 0))
+(def intersect-answer (->Point 0.0 0.0 1000.0))
 
-(deftest intersect-test (is (= it-answer (intersect basic-sphere pixel eye))))
+(deftest intersect-test
+   (is (= intersect-answer (intersect basic-sphere pixel eye)))  )
 
 ;(def plumb (displacement pixel (center basic-sphere)))
