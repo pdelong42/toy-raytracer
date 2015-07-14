@@ -52,7 +52,7 @@
       (let
          [  disc (- (square b) (* 4 a c))  ]
          (if-not
-            (> disc 0)
+            (neg? disc)
             (let
                [  discrt (Math/sqrt disc)  ]
                (min
