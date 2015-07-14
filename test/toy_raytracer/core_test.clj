@@ -34,13 +34,17 @@
 
 (deftest distance-test (is (= 27.0 (square (distance dummy-point dummy-ray)))))
 
-(deftest intersect-test
-   (is (nil? (intersect red-sphere dummy-point dummy-ray)))  )
+; this started to return an actual meaningful result;
+; so, that's cool, but I needed a more representative test anyway;
+;(deftest intersect-test
+;   (is (nil? (intersect red-sphere dummy-point dummy-ray)))  )
 
-(deftest intersect-test2
-   (is (=
-         (->Point 1000 0 0)
-         (intersect
-            (defsphere 1.0 200 (->Point 1200 0 0))
-            (->Point 0 0 0)
-            eye  )  )  )  )
+(def pixel (->Point 0 0 0))
+
+(def basic-sphere (defsphere 1.0 100 (->Point 1200 0 0)))
+
+(def it-answer (->Point 1000 0 0))
+
+(deftest intersect-test (is (= it-answer (intersect basic-sphere pixel eye))))
+
+;(def plumb (displacement pixel (center basic-sphere)))
