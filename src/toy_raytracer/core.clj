@@ -132,6 +132,9 @@
 
 (defn first-hit
    [world point ray]
+   (reduce #(assoc % %2 (intersect %2 point ray)) {} world)  )
+
+(comment
    (loop
       [  closest nil
          hit     nil
@@ -186,19 +189,21 @@
    [color radius center]
    (->Sphere (->Surface color) radius (apply ->Point center))  )
 
-(defn -main
-   [& args]
-   ;; work around dangerous default behaviour in Clojure
-   (alter-var-root #'*read-eval* (constantly false))
-   (tracer
-      [  (defsphere 1.0 200 [    0     0 -1200])
-         (defsphere 1.0 200 [    0     0  1200])
-         (defsphere 1.0 200 [    0 -1200     0])
-         (defsphere 1.0 200 [    0  1200     0])
-         (defsphere 1.0 200 [-1200     0     0])
-         (defsphere 1.0 200 [ 1200     0     0])  ]  )  )
+(def world
+   [  (defsphere 1.0 200 [    0     0 -1200])
+      (defsphere 1.0 200 [    0     0  1200])
+      (defsphere 1.0 200 [    0 -1200     0])
+      (defsphere 1.0 200 [    0  1200     0])
+      (defsphere 1.0 200 [-1200     0     0])
+      (defsphere 1.0 200 [ 1200     0     0])  ]  )
 
 (comment
       [  (defsphere 0.8 200 [  0 -300 -1200])
          (defsphere 0.7 200 [-80 -150 -1200])
          (defsphere 0.9 200 [ 70 -100 -1200])  ]  )
+
+(defn -main
+   [& args]
+   ;; work around dangerous default behaviour in Clojure
+   (alter-var-root #'*read-eval* (constantly false))
+   (tracer world)  )
