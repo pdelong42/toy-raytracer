@@ -130,9 +130,30 @@
    [surface intersection ray]
    (max 0 (inner ray (normal surface intersection)))  )
 
+; ToDo: in the function below, I have to remember to map the intersection
+; points to their (scalar) distances, for subsequent sorting...
+
 (defn first-hit
    [world point ray]
-   (reduce #(assoc % %2 (intersect %2 point ray)) {} world)  )
+   (if
+      [  shoot #(assoc % (intersect %2 point ray) %2)
+         hits (reduce shoot {} world)  ]
+      hits)  )
+
+; Yeah, I opted for overwriting a member of the map if it has the same key.  I
+; suppose I could've added it to an array of values for that key, but I
+; would've had to decide which one to select later anyway.  This way is
+; probably a bit arbitrary, so I should either a) find some other way to
+; further choose between the outcomes, or b) sort on some criterion to make the
+; outcome deterministic.
+
+(comment
+   (remove
+      (fn [x]
+         (or
+            (pos? (x world))
+            (nil? (x world))  )  )
+      (sort)  )  )
 
 (comment
    (loop
