@@ -141,7 +141,11 @@
             [shots object]
             (let
                [  shot (intersect object point ray)  ]
-               (assoc shots (if shot (distance shot point)) object)  )  )
+               (assoc shots
+                  (if
+                     (and shot (neg? (z shot)))
+                     (distance shot point)  )
+                  object  )  )  )
          {}
          world  )
       nil  )  )
