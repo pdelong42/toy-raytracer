@@ -135,10 +135,16 @@
 
 (defn first-hit
    [world point ray]
-   (if
-      [  shoot #(assoc % (intersect %2 point ray) %2)
-         hits (reduce shoot {} world)  ]
-      hits)  )
+   (dissoc
+      (reduce
+         (fn
+            [shots object]
+            (let
+               [  shot (intersect object point ray)  ]
+               (assoc shots (if shot (distance shot point)) object)  )  )
+         {}
+         world  )
+      nil  )  )
 
 ; Yeah, I opted for overwriting a member of the map if it has the same key.  I
 ; suppose I could've added it to an array of values for that key, but I
