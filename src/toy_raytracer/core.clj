@@ -44,6 +44,12 @@
 
 (defn unit-vector [v] (toPoint (map #(/ % (magnitude v)) (fromPoint v))))
 
+; minroot has a design flaw: we shouldn't be getting the "nearest"
+; root based on the signed value.  That is, returning the *lowest*
+; root won't get us the root that is *closest* to the camera.  For
+; that, we need to take the absolute values of the roots.  Though that
+; feels a bit kludgey...
+
 (defn minroot
    [a b c]
    (if
