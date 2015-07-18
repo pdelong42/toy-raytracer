@@ -48,4 +48,15 @@
 (deftest intersect-test
    (is (= intersect-answer (intersect basic-sphere pixel eye)))  )
 
-;(def plumb (displacement pixel (center basic-sphere)))
+(def dummy-world
+   [  (defsphere 1.0 200 [    0     0 -1200])
+      (defsphere 1.0 200 [    0     0  1200])
+      (defsphere 1.0 200 [    0 -1200     0])
+      (defsphere 1.0 200 [    0  1200     0])
+      (defsphere 1.0 200 [-1200     0     0])
+      (defsphere 1.0 200 [ 1200     0     0])  ]  )
+
+(def first-hit-answer (defsphere 1.0 200 [0 0 1200]))
+
+(deftest first-hit-test
+   (is (= first-hit-answer (first-hit dummy-world pixel eye))))
