@@ -41,20 +41,27 @@
 
 (def pixel (->Point 0 0 0))
 
-(def basic-sphere (defsphere 1 200 [0 0 1200]))
+(def sphere-back   (defsphere 1.0 200 [    0     0 -1200]))
+(def sphere-front  (defsphere 1.0 200 [    0     0  1200]))
+(def sphere-bottom (defsphere 1.0 200 [    0 -1200     0]))
+(def sphere-top    (defsphere 1.0 200 [    0  1200     0]))
+(def sphere-left   (defsphere 1.0 200 [-1200     0     0]))
+(def sphere-right  (defsphere 1.0 200 [ 1200     0     0]))
+
+(def test-ray (unit-vector (displacement pixel eye)))
 
 (def intersect-answer (->Point 0.0 0.0 1000.0))
 
 (deftest intersect-test
-   (is (= intersect-answer (intersect basic-sphere pixel eye)))  )
+   (is (= intersect-answer (intersect sphere-front eye test-ray)))  )
 
 (def dummy-world
-   [  (defsphere 1.0 200 [    0     0 -1200])
-      (defsphere 1.0 200 [    0     0  1200])
-      (defsphere 1.0 200 [    0 -1200     0])
-      (defsphere 1.0 200 [    0  1200     0])
-      (defsphere 1.0 200 [-1200     0     0])
-      (defsphere 1.0 200 [ 1200     0     0])  ]  )
+   [  sphere-front
+      sphere-back
+      sphere-top
+      sphere-bottom
+      sphere-left
+      sphere-right  ]  )
 
 (def first-hit-answer (defsphere 1.0 200 [0 0 1200]))
 
