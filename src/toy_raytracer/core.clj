@@ -141,20 +141,23 @@
 
 (defn first-hit
    [world point ray]
-   (dissoc
-      (reduce
-         (fn
-            [shots object]
-            (let
-               [  shot (intersect object point ray)  ]
-               (assoc shots
-                  (if
-                     (and shot (neg? (z shot)))
-                     (distance shot point)  )
-                  object  )  )  )
-         {}
-         world  )
-      nil  )  )
+   (let
+      [  hits
+         (reduce
+            (fn
+               [shots object]
+               (let
+                  [  shot (intersect object point ray)  ]
+                  (assoc shots
+                     (if
+                        (and shot (neg? (z shot)))
+                        (distance shot point)  )
+                     object  )  )  )
+            {}
+            world  )
+         distances (keys (dissoc hits nil))
+         closest (first (sort distances))  ]
+      [closest (hits closest)]  )  )
 
 ; Yeah, I opted for overwriting a member of the map if it has the same key.  I
 ; suppose I could've added it to an array of values for that key, but I
@@ -162,28 +165,6 @@
 ; probably a bit arbitrary, so I should either a) find some other way to
 ; further choose between the outcomes, or b) sort on some criterion to make the
 ; outcome deterministic.
-
-(comment
-   (remove
-      (fn [x]
-         (or
-            (pos? (x world))
-            (nil? (x world))  )  )
-      (sort)  )  )
-
-(comment
-   (loop
-      [  closest nil
-         hit     nil
-         dist    nil
-         s       (first world)
-         slist   (rest  world)  ]
-      (if-let [h (intersect s point ray)]
-         (if-let [d (distance h point)]
-            (if
-               (or (nil? dist) (< d dist))
-               (recur s h d (first slist) (rest slist))
-               [closest hit]  )  )  )  )  )
 
 (defn sendray
    [world point ray]
