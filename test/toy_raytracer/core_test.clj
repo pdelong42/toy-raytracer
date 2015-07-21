@@ -54,8 +54,13 @@
 
 (def intersect-answer (->Point 0.0 0.0 1000.0))
 
-(deftest intersect-test
+(deftest intersect-test1
+   "Camera aft of screen plane, looking at a sphere fore of sceen plane"
    (is (= intersect-answer (intersect sphere-front test-eye test-ray)))  )
+
+(deftest intersect-test2
+   "In this case, the sphere shouldn't even be visible from the camera"
+   (is (nil? (intersect sphere-back test-eye test-ray)))  )
 
 (def dummy-world
    [  sphere-front
