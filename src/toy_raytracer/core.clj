@@ -126,7 +126,8 @@
               (square ray)
               (* 2 (inner plumb ray))
               (- (square plumb) (square (radius sphere)))  )  ]
-      (if n
+      (if
+         (and n (not (neg? n)))
          (toPoint
             (map #(+ % (* n %2))
                (fromPoint point)
