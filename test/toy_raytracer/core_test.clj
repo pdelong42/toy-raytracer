@@ -48,19 +48,33 @@
 (def sphere-left   (defsphere 1.0 200 [-1200     0     0]))
 (def sphere-right  (defsphere 1.0 200 [ 1200     0     0]))
 
-(def test-eye (->Point 0 0 -200))
+(def test-eye1 (->Point 0 0 -200))
 
-(def test-ray (unit-vector (displacement pixel test-eye)))
+(def test-eye2 (->Point 0 0  200))
 
-(def intersect-answer (->Point 0.0 0.0 1000.0))
+(def test-ray1 (unit-vector (displacement pixel test-eye1)))
+
+(def test-ray2 (unit-vector (displacement pixel test-eye2)))
+
+(def intersect-answer1 (->Point 0.0 0.0  1000.0))
+
+(def intersect-answer2 (->Point 0.0 0.0 -1000.0))
 
 (deftest intersect-test1
    "Camera aft of screen plane, looking at a sphere fore of sceen plane"
-   (is (= intersect-answer (intersect sphere-front test-eye test-ray)))  )
+   (is (= intersect-answer1 (intersect sphere-front test-eye1 test-ray1)))  )
 
 (deftest intersect-test2
    "In this case, the sphere shouldn't even be visible from the camera"
-   (is (nil? (intersect sphere-back test-eye test-ray)))  )
+   (is (nil? (intersect sphere-back test-eye1 test-ray1)))  )
+
+(deftest intersect-test3
+   "In this case, the sphere shouldn't even be visible from the camera"
+   (is (nil? (intersect sphere-front test-eye2 test-ray2)))  )
+
+(deftest intersect-test4
+   "Camera fore of screen plane, looking at a sphere aft of sceen plane"
+   (is (= intersect-answer2 (intersect sphere-back test-eye2 test-ray2)))  )
 
 (def dummy-world
    [  sphere-front
@@ -73,4 +87,4 @@
 (def first-hit-answer (defsphere 1.0 200 [0 0 1200]))
 
 (deftest first-hit-test
-   (is (= first-hit-answer (first-hit dummy-world test-eye test-ray))))
+   (is (= first-hit-answer (first-hit dummy-world test-eye1 test-ray1))))
