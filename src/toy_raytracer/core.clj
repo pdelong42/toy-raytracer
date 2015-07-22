@@ -145,10 +145,8 @@
                   (assoc shots
                      (if shot (distance shot point))
                      [object shot]  )  )  )
-         hits (reduce shoot-object {} world)
-         distances (keys (dissoc hits nil))
-         closest (first (sort distances))  ]
-      (hits closest)  )  )
+         hits (reduce shoot-object {} world)   ]
+      (hits (-> hits (dissoc nil) keys sort first))  )  )
 
 ; Yeah, I opted for overwriting a member of the map if it has the same key.  I
 ; suppose I could've added it to an array of values for that key, but I
@@ -160,10 +158,10 @@
 (defn sendray
    [world point ray]
    (if-let
-      [  [s intersection]
+      [  [surface intersection]
          (first-hit world point ray)  ]
-      (* (lambert s intersection ray)
-         (color s)  )
+      (* (lambert surface intersection ray)
+         (color surface)  )
       0  )  )
 
 (def eye (->Point 0 0 200))
