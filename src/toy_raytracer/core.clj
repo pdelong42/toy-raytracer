@@ -137,18 +137,22 @@
 (defn first-hit
    [world point ray]
    (let
-      [  hits
-         (reduce
+      [  shoot-object
             (fn
                [shots object]
                (let
                   [  shot (intersect object point ray)  ]
                   (assoc shots (if shot (distance shot point)) object)  )  )
-            {}
-            world  )
+         hits (reduce shoot-object {} world)
          distances (keys (dissoc hits nil))
          closest (first (sort distances))  ]
       [closest (hits closest)]  )  )
+
+; Oops, I forgot that first-hit is expected to return a tuple of the
+; surface, and the point of intersection with that surface (named
+; "shot" in the above).  I need to work on fixing that, and the test
+; based on it.
+
 
 ; Yeah, I opted for overwriting a member of the map if it has the same key.  I
 ; suppose I could've added it to an array of values for that key, but I
