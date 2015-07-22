@@ -84,7 +84,7 @@
       sphere-left
       sphere-right  ]  )
 
-(def first-hit-answer (defsphere 1.0 200 [0 0 1200]))
+(def first-hit-answer [1200.0 (defsphere 1.0 200 [0 0 1200])])
 
 (deftest first-hit-test
    (is (= first-hit-answer (first-hit dummy-world test-eye1 test-ray1))))
