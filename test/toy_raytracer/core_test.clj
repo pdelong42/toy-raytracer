@@ -84,7 +84,12 @@
       sphere-left
       sphere-right  ]  )
 
-(def first-hit-answer [sphere-front intersect-answer1])
+(def first-hit-answer1 [sphere-front intersect-answer1])
 
-(deftest first-hit-test
-   (is (= first-hit-answer (first-hit dummy-world test-eye1 test-ray1))))
+(def first-hit-answer2 [sphere-back intersect-answer2])
+
+(deftest first-hit-test1
+   (is (= first-hit-answer1 (first-hit dummy-world test-eye1 test-ray1))))
+
+(deftest first-hit-test2
+   (is (= first-hit-answer2 (first-hit dummy-world test-eye2 test-ray2))))
