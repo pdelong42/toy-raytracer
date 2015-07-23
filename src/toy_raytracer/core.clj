@@ -145,8 +145,8 @@
                   (assoc shots
                      (if shot (distance shot point))
                      [object shot]  )  )  )
-         closest-hit #(% (-> % (dissoc nil) keys sort first))  ]
-     (closest-hit (reduce shoot-object {} world))  )  )
+         closest-hit #(% (-> % keys sort first))  ]
+     (closest-hit (dissoc (reduce shoot-object {} world) nil))  )  )
 
 ; Yeah, I opted for overwriting a member of the map if it has the same key.  I
 ; suppose I could've added it to an array of values for that key, but I
