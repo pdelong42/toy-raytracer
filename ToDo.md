@@ -22,3 +22,5 @@
  - [ ] Find out why x and y axes are transposed, and fix.
 
  - [ ] Add support for color (not just greyscale).
+
+ - [ ] parallelize this code
