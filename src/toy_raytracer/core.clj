@@ -168,10 +168,11 @@
 
 (defn color-at
    [world x y]
-   (* 255.0
-      (sendray world eye
-         (unit-vector
-            (displacement (->Point x y 0) eye)  )  )  )  )
+   (int
+      (* 255
+         (sendray world eye
+            (unit-vector
+               (displacement (->Point x y 0) eye)  )  )  )  )  )   
 
 (defn tracer
 
