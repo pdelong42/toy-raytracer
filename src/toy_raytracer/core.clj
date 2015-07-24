@@ -200,7 +200,10 @@
 (def world
    [  (defsphere 0.8 200 [  0 -300 -1200])
       (defsphere 0.7 200 [-80 -150 -1200])
-      (defsphere 0.9 200 [ 70 -100 -1200])  ]  )
+      (defsphere 0.9 200 [ 70 -100 -1200])
+      (for
+         [  xx (range -2 3) zz (range 2 8)  ]
+         (defsphere 0.75 40 [(* xx 200) 300 (* zz -400)])  )  ]  )
 
 (defn -main
    [& args]
