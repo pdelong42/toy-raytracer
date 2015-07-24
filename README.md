@@ -17,3 +17,9 @@ of this has made for clearer, more concise code, particuarly in the places
 where I can use Clojure's built-in data structures and destructuring; other
 places it's been a more rocky transition, such as adapting to Clojure's object
 model (or lack thereof).
+
+To run:
+
+   lein run | pnmtopng > foo.png
+
+(This assumes you've installed the netpbm utilities.)
