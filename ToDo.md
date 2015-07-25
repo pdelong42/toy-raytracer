@@ -19,7 +19,7 @@
  - [ ] Implement a "cube" object (or *any* polyhedron, for that
    matter) using CSG of planes.
 
- - [ ] Find out why x and y axes are transposed, and fix.
+ - [X] Find out why x and y axes are transposed, and fix.
 
  - [ ] Add support for color (not just greyscale).
 

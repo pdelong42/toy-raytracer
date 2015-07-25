@@ -190,7 +190,7 @@
       (printf "P2 %d %d 255\n" sidelen sidelen)
       (println
          (join \space
-            (for [x sideseq y sideseq]
+            (for [y sideseq x sideseq]
                (color-at world x y)  )  )  )  )  )
 
 (defn defsphere
