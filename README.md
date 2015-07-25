@@ -20,6 +20,8 @@ model (or lack thereof).
 
 To run:
 
-   lein run | pnmtopng > foo.png
+``
+   $ lein run | pnmtopng > foo.png
+``
 
 (This assumes you've installed the netpbm utilities.)
