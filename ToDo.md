@@ -24,9 +24,18 @@
  - [ ] Implement a "cube" object (or *any* polyhedron, for that
    matter) using CSG of planes.
 
- - [ ] Add support for color (not just greyscale).
+ - [ ] Add support for color (not just greyscale) and output in the
+   appropriate format.
 
  - [ ] Parallelize this code.
 
  - [ ] Implement light sources that don't coincide with the
-   eye/camera.
+   eye/camera (so we can have cool stuff like shadows).
+
+ - [ ] Optimize the numeric code to include hinting and to avoid as
+   much boxing as possible.
+
+ - [ ] Implement transformations (e.g., rotations, translations,
+   scaling) which can be applied to groups of objects in the scene.
+   Again, this requires the scene description to be a hierarchical
+   graph.
