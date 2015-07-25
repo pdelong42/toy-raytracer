@@ -39,3 +39,6 @@
    scaling) which can be applied to groups of objects in the scene.
    Again, this requires the scene description to be a hierarchical
    graph.
+
+ - [ ] add a command-line interface for passing options (particularly
+   for passing resolution arguments)
