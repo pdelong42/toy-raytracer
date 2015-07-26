@@ -4,7 +4,9 @@
 
  - [X] Finish laying-out the original scene from the book.
 
- - [ ] Test in higher resolutions.
+ - [X] Find out why x and y axes are transposed, and fix.
+
+ - [X] Test in higher resolutions.
 
  - [ ] I currently mix floats and ints in my tests, rather
    arbitrarily.  I need to normalize this.
@@ -14,11 +16,29 @@
 
  - [ ] Next I should implement a "plane" primitive.
 
- - [ ] Implement CSG (constructive solid geometry)
+ - [ ] Implement CSG (constructive solid geometry).  This probably
+   entails converting the scene description into a hierarchy, rather
+   than it continuing to be linear.  That means the logic needs to be
+   updated to handle a hierarchy.
 
  - [ ] Implement a "cube" object (or *any* polyhedron, for that
    matter) using CSG of planes.
 
- - [ ] Find out why x and y axes are transposed, and fix.
+ - [ ] Add support for color (not just greyscale) and output in the
+   appropriate format.
 
- - [ ] Add support for color (not just greyscale).
+ - [ ] Parallelize this code.
+
+ - [ ] Implement light sources that don't coincide with the
+   eye/camera (so we can have cool stuff like shadows).
+
+ - [ ] Optimize the numeric code to include hinting and to avoid as
+   much boxing as possible.
+
+ - [ ] Implement transformations (e.g., rotations, translations,
+   scaling) which can be applied to groups of objects in the scene.
+   Again, this requires the scene description to be a hierarchical
+   graph.
+
+ - [ ] add a command-line interface for passing options (particularly
+   for passing resolution arguments)
