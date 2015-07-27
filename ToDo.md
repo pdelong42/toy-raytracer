@@ -42,3 +42,7 @@
 
  - [ ] add a command-line interface for passing options (particularly
    for passing resolution arguments)
+
+ - [ ] add provisions for velocity coordinates, and relativistic
+   effects (this would fall under the pie-in-the-sky category of
+   feature additions, but it would be nice to finally do this)
