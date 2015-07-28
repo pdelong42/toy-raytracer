@@ -165,9 +165,10 @@
       [  ray (unit-vector (displacement (->Point x y 0.0) eye))  ]
       (if-let
          [  [surface intersection] (first-hit world eye ray)  ]
-         (map
-           #(int (* 255 % (lambert surface intersection ray)))
-            (color surface)  )
+         (apply ->Color
+            (map
+              #(int (* 255 % (lambert surface intersection ray)))
+               (vals (color surface))  ))
          (->Color 0 0 0)  )  )  )
 
 (defn tracer
@@ -183,11 +184,11 @@
       [  delta (/ res)
          sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
-      (printf "P2 %d %d 255\n" sidelen sidelen)
+      (printf "P3 %d %d 255\n" sidelen sidelen)
       (println
          (join \space
             (for [y sideseq x sideseq]
-               (color-at world x y)  )  )  )  )  )
+               (join \space (vals (color-at world x y)))  )  )  )  )  )
 
 (defn defsphere
    [color radius center]
