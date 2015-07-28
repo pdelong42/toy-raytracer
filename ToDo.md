@@ -46,3 +46,6 @@
  - [ ] add provisions for velocity coordinates, and relativistic
    effects (this would fall under the pie-in-the-sky category of
    feature additions, but it would be nice to finally do this)
+
+ - [ ] add support for texture maps (they can be a property of the
+   base "surface" type, like color is)
