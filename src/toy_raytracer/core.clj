@@ -165,11 +165,10 @@
       [  ray (unit-vector (displacement (->Point x y 0.0) eye))  ]
       (if-let
          [  [surface intersection] (first-hit world eye ray)  ]
-         (int
-            (* (lambert surface intersection ray)
-               (color surface)
-               255  )  )
-         0  )  )  )
+         (map
+           #(int (* 255 % (lambert surface intersection ray)))
+            (color surface)  )
+         (->Color 0 0 0)  )  )  )
 
 (defn tracer
 
