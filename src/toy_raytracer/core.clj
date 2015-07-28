@@ -191,18 +191,23 @@
                (join \space (vals (color-at world x y)))  )  )  )  )  )
 
 (defn defsphere
-   [color radius center]
-   (->Sphere (->Surface color) radius (apply ->Point center))  )
+   [radius center color]
+   (->Sphere
+      (->Surface (apply ->Color color))
+      radius
+      (apply ->Point center)  )  )
 
 (def world
    (concat
-      [  (defsphere 0.8 200.0 [  0.0 -300.0 -1200.0])
-         (defsphere 0.7 200.0 [-80.0 -150.0 -1200.0])
-         (defsphere 0.9 200.0 [ 70.0 -100.0 -1200.0])  ]
+      [  (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
+         (defsphere 200.0 [-80.0 -150.0 -1200.0] [0.0 0.7 0.0])
+         (defsphere 200.0 [ 70.0 -100.0 -1200.0] [0.0 0.0 0.9])  ]
       (for
          [  xx (range -2 3) zz (range 2 8)  ]
-         (defsphere 0.75 40.0 [(* xx 200.0) 300.0 (* zz -400.0)])  )  ))
-
+         (defsphere
+            40.0
+            [(* xx 200.0) 300.0 (* zz -400.0)]
+            [0.75 0.75 0.75]  )  )  )  )
 
 (defn -main
    [& args]
