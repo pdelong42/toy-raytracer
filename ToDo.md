@@ -2,12 +2,6 @@
    than the placeholder :red value I was using.  Also, rename the test
    appropriately.
 
- - [X] Finish laying-out the original scene from the book.
-
- - [X] Find out why x and y axes are transposed, and fix.
-
- - [X] Test in higher resolutions.
-
  - [ ] I currently mix floats and ints in my tests, rather
    arbitrarily.  I need to normalize this.
 
@@ -23,9 +17,6 @@
 
  - [ ] Implement a "cube" object (or *any* polyhedron, for that
    matter) using CSG of planes.
-
- - [ ] Add support for color (not just greyscale) and output in the
-   appropriate format.
 
  - [ ] Parallelize this code.
 
@@ -49,3 +40,12 @@
 
  - [ ] add support for texture maps (they can be a property of the
    base "surface" type, like color is)
+
+ - [X] Finish laying-out the original scene from the book.
+
+ - [X] Find out why x and y axes are transposed, and fix.
+
+ - [X] Test in higher resolutions.
+
+ - [X] Add support for color (not just greyscale) and output in the
+   appropriate format.
