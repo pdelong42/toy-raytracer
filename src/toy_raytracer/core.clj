@@ -3,6 +3,8 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
+(defrecord Color [red green blue])
+
 (defrecord Point [x y z])
 
 (defprotocol PointProperties
@@ -155,24 +157,19 @@
 ; further choose between the outcomes, or b) sort on some criterion to make the
 ; outcome deterministic.
 
-(defn sendray
-   [world point ray]
-   (if-let
-      [  [surface intersection]
-         (first-hit world point ray)  ]
-      (* (lambert surface intersection ray)
-         (color surface)  )
-      0  )  )
-
 (def eye (->Point 0.0 0.0 200.0))
 
 (defn color-at
    [world x y]
-   (int
-      (* 255
-         (sendray world eye
-            (unit-vector
-               (displacement (->Point x y 0.0) eye)  )  )  )  )  )   
+   (let
+      [  ray (unit-vector (displacement (->Point x y 0.0) eye))  ]
+      (if-let
+         [  [surface intersection] (first-hit world eye ray)  ]
+         (int
+            (* (lambert surface intersection ray)
+               (color surface)
+               255  )  )
+         0  )  )  )
 
 (defn tracer
 
@@ -211,4 +208,4 @@
    [& args]
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
-   (tracer world :res 10)  )
+   (tracer world)  )
