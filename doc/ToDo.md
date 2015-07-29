@@ -2,6 +2,9 @@
    than the placeholder :red value I was using.  Also, rename the test
    appropriately.
 
+ - [ ] add a command-line interface for passing options (particularly
+   for passing resolution arguments)
+
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
 
@@ -27,9 +30,6 @@
    scaling) which can be applied to groups of objects in the scene.
    Again, this requires the scene description to be a hierarchical
    graph.
-
- - [ ] add a command-line interface for passing options (particularly
-   for passing resolution arguments)
 
  - [ ] add provisions for velocity coordinates, and relativistic
    effects (this would fall under the pie-in-the-sky category of
