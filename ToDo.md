@@ -2,9 +2,6 @@
    than the placeholder :red value I was using.  Also, rename the test
    appropriately.
 
- - [ ] I currently mix floats and ints in my tests, rather
-   arbitrarily.  I need to normalize this.
-
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
 
@@ -49,3 +46,6 @@
 
  - [X] Add support for color (not just greyscale) and output in the
    appropriate format.
+
+ - [X] I currently mix floats and ints in my tests, rather
+   arbitrarily.  I need to normalize this.
