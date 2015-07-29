@@ -11,7 +11,7 @@
 
 (def displacement-result (->Point -3.0 -3.0 -3.0))
 
-(def red-surface (->Surface :red))
+(def red-surface (->Surface (apply ->Color [1.0 0.0 0.0])))
 
 (def red-sphere (->Sphere red-surface 5.0 dummy-point))
 
@@ -39,14 +39,14 @@
 ;(deftest intersect-test
 ;   (is (nil? (intersect red-sphere dummy-point dummy-ray)))  )
 
-(def pixel (->Point 0 0 0))
+(def pixel (->Point 0.0 0.0 0.0))
 
-(def sphere-back   (defsphere 1.0 200.0 [    0.0     0.0 -1200.0]))
-(def sphere-front  (defsphere 1.0 200.0 [    0.0     0.0  1200.0]))
-(def sphere-bottom (defsphere 1.0 200.0 [    0.0 -1200.0     0.0]))
-(def sphere-top    (defsphere 1.0 200.0 [    0.0  1200.0     0.0]))
-(def sphere-left   (defsphere 1.0 200.0 [-1200.0     0.0     0.0]))
-(def sphere-right  (defsphere 1.0 200.0 [ 1200.0     0.0     0.0]))
+(def sphere-back   (defsphere 200.0 [    0.0     0.0 -1200.0] [1.0 1.0 1.0]))
+(def sphere-front  (defsphere 200.0 [    0.0     0.0  1200.0] [1.0 1.0 1.0]))
+(def sphere-bottom (defsphere 200.0 [    0.0 -1200.0     0.0] [1.0 1.0 1.0]))
+(def sphere-top    (defsphere 200.0 [    0.0  1200.0     0.0] [1.0 1.0 1.0]))
+(def sphere-left   (defsphere 200.0 [-1200.0     0.0     0.0] [1.0 1.0 1.0]))
+(def sphere-right  (defsphere 200.0 [ 1200.0     0.0     0.0] [1.0 1.0 1.0]))
 
 (def dummy-world
    [  sphere-front
