@@ -1,10 +1,6 @@
  - [ ] create more named objects in the unit tests, for convenience
    and readability
 
- - [ ] Fix some of the initial tests to use a real color value, rather
-   than the placeholder :red value I was using.  Also, rename the test
-   appropriately.
-
  - [ ] add a command-line interface for passing options (particularly
    for passing resolution arguments)
 
@@ -55,3 +51,7 @@
 
  - [X] I currently mix floats and ints in my tests, rather
    arbitrarily.  I need to normalize this.
+
+ - [X] Fix some of the initial tests to use a real color value, rather
+   than the placeholder :red value I was using.  Also, rename the test
+   appropriately.
