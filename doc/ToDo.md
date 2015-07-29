@@ -1,15 +1,6 @@
  - [ ] Fix some of the initial tests to use a real color value, rather
    than the placeholder :red value I was using.  Also, rename the test
-   apprpriately.
-
- - [X] Finish laying-out the original scene from the book.
-
- - [X] Find out why x and y axes are transposed, and fix.
-
- - [X] Test in higher resolutions.
-
- - [ ] I currently mix floats and ints in my tests, rather
-   arbitrarily.  I need to normalize this.
+   appropriately.
 
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
@@ -23,9 +14,6 @@
 
  - [ ] Implement a "cube" object (or *any* polyhedron, for that
    matter) using CSG of planes.
-
- - [ ] Add support for color (not just greyscale) and output in the
-   appropriate format.
 
  - [ ] Parallelize this code.
 
@@ -42,3 +30,25 @@
 
  - [ ] add a command-line interface for passing options (particularly
    for passing resolution arguments)
+
+ - [ ] add provisions for velocity coordinates, and relativistic
+   effects (this would fall under the pie-in-the-sky category of
+   feature additions, but it would be nice to finally do this)
+
+ - [ ] add support for texture maps (they can be a property of the
+   base "surface" type, like color is)
+
+ - [ ] put the functions into a separate namespace than the scene
+   description
+
+ - [X] Finish laying-out the original scene from the book.
+
+ - [X] Find out why x and y axes are transposed, and fix.
+
+ - [X] Test in higher resolutions.
+
+ - [X] Add support for color (not just greyscale) and output in the
+   appropriate format.
+
+ - [X] I currently mix floats and ints in my tests, rather
+   arbitrarily.  I need to normalize this.

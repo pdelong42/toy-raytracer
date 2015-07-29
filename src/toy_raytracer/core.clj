@@ -3,6 +3,8 @@
    (:import java.lang.Math)
    (:gen-class)  )
 
+(defrecord Color [red green blue])
+
 (defrecord Point [x y z])
 
 (defprotocol PointProperties
@@ -50,14 +52,14 @@
       (zero? a)
       (/ (- c) b)
       (let
-         [  disc (- (square b) (* 4 a c))  ]
+         [  disc (- (square b) (* 4.0 a c))  ]
          (if-not
             (neg? disc)
             (let
                [  discrt (Math/sqrt disc)  ]
                (min
-                  (/ (+ (- b) discrt) (* 2 a))
-                  (/ (- (- b) discrt) (* 2 a))  )  )  )  )  )  )
+                  (/ (+ (- b) discrt) (* 2.0 a))
+                  (/ (- (- b) discrt) (* 2.0 a))  )  )  )  )  )  )
 
 (defrecord Surface [color])
 
@@ -118,7 +120,7 @@
       [  plumb (displacement point (center sphere))
          n (minroot
               (square ray)
-              (* 2 (inner plumb ray))
+              (* 2.0 (inner plumb ray))
               (- (square plumb) (square (radius sphere)))  )  ]
       (if
          (and n (not (neg? n)))
@@ -155,24 +157,19 @@
 ; further choose between the outcomes, or b) sort on some criterion to make the
 ; outcome deterministic.
 
-(defn sendray
-   [world point ray]
-   (if-let
-      [  [surface intersection]
-         (first-hit world point ray)  ]
-      (* (lambert surface intersection ray)
-         (color surface)  )
-      0  )  )
-
-(def eye (->Point 0 0 200))
+(def eye (->Point 0.0 0.0 200.0))
 
 (defn color-at
    [world x y]
-   (int
-      (* 255
-         (sendray world eye
-            (unit-vector
-               (displacement (->Point x y 0) eye)  )  )  )  )  )   
+   (let
+      [  ray (unit-vector (displacement (->Point x y 0.0) eye))  ]
+      (if-let
+         [  [surface intersection] (first-hit world eye ray)  ]
+         (apply ->Color
+            (map
+              #(int (* 255 % (lambert surface intersection ray)))
+               (vals (color surface))  ))
+         (->Color 0 0 0)  )  )  )
 
 (defn tracer
 
@@ -187,25 +184,30 @@
       [  delta (/ res)
          sideseq (range -50 (+ 50 delta) delta)
          sidelen (count sideseq)  ]
-      (printf "P2 %d %d 255\n" sidelen sidelen)
+      (printf "P3 %d %d 255\n" sidelen sidelen)
       (println
          (join \space
             (for [y sideseq x sideseq]
-               (color-at world x y)  )  )  )  )  )
+               (join \space (vals (color-at world x y)))  )  )  )  )  )
 
 (defn defsphere
-   [color radius center]
-   (->Sphere (->Surface color) radius (apply ->Point center))  )
+   [radius center color]
+   (->Sphere
+      (->Surface (apply ->Color color))
+      radius
+      (apply ->Point center)  )  )
 
 (def world
    (concat
-      [  (defsphere 0.8 200 [  0 -300 -1200])
-         (defsphere 0.7 200 [-80 -150 -1200])
-         (defsphere 0.9 200 [ 70 -100 -1200])  ]
+      [  (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
+         (defsphere 200.0 [-80.0 -150.0 -1200.0] [0.0 0.7 0.0])
+         (defsphere 200.0 [ 70.0 -100.0 -1200.0] [0.0 0.0 0.9])  ]
       (for
          [  xx (range -2 3) zz (range 2 8)  ]
-         (defsphere 0.75 40 [(* xx 200) 300 (* zz -400)])  )  ))
-
+         (defsphere
+            40.0
+            [(* xx 200.0) 300.0 (* zz -400.0)]
+            [0.75 0.75 0.75]  )  )  )  )
 
 (defn -main
    [& args]
