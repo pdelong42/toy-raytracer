@@ -38,6 +38,9 @@
  - [ ] add support for texture maps (they can be a property of the
    base "surface" type, like color is)
 
+ - [ ] put the functions into a separate namespace than the scene
+   description
+
  - [X] Finish laying-out the original scene from the book.
 
  - [X] Find out why x and y axes are transposed, and fix.
