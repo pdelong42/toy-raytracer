@@ -1,6 +1,3 @@
- - [ ] create more named objects in the unit tests, for convenience
-   and readability
-
  - [ ] add a command-line interface for passing options (particularly
    for passing resolution arguments)
 
