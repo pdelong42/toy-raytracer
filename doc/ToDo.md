@@ -1,6 +1,3 @@
- - [ ] add a command-line interface for passing options (particularly
-   for passing resolution arguments)
-
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
 
@@ -37,6 +34,10 @@
  - [ ] put the functions into a separate namespace than the scene
    description
 
+ - [ ] support output resolution / dimensions as direct
+   width-by-height args, rather than this business with a multiplier
+   and a square or fixed shape
+
  - [X] Finish laying-out the original scene from the book.
 
  - [X] Find out why x and y axes are transposed, and fix.
@@ -52,3 +53,6 @@
  - [X] Fix some of the initial tests to use a real color value, rather
    than the placeholder :red value I was using.  Also, rename the test
    appropriately.
+
+ - [X] add a command-line interface for passing options (particularly
+   for passing resolution arguments)
