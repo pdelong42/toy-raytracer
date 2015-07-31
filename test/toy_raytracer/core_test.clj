@@ -11,7 +11,9 @@
 
 (def displacement-result (->Point -3.0 -3.0 -3.0))
 
-(def red-surface (->Surface (apply ->Color [1.0 0.0 0.0])))
+(def red-color (->Color 1.0 0.0 0.0))
+
+(def red-surface (->Surface red-color))
 
 (def red-sphere (->Sphere red-surface 5.0 dummy-point))
 

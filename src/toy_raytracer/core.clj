@@ -1,5 +1,7 @@
 (ns toy-raytracer.core
-   (:require [clojure.string :refer [join]])
+   (:require
+      [clojure.string    :refer [join]]
+      [clojure.tools.cli :refer [parse-opts]]  )
    (:import java.lang.Math)
    (:gen-class)  )
 
@@ -209,8 +211,37 @@
             [(* xx 200.0) 300.0 (* zz -400.0)]
             [0.75 0.75 0.75]  )  )  )  )
 
+(def cli-options
+   [  [  "-m"
+         "--multiplier INT"
+         "resolution multiplier"
+         :parse-fn #(Integer/parseInt %)
+         :validate [integer? "not an integer"]
+         :default 1           ]
+      [  "-h" "--help" "help"  ]  ]  )
+
+(defn usage
+   [exit-code options-summary & [error-msg]]
+   (if error-msg (println error-msg "\n"))
+   (println
+      (join \newline
+         [  "Usage:"
+            ""
+            "   java -jar toy-raytracer-X.Y.Z-standalone.jar -options..."
+            ""
+            "Options: (with defaults indicated)"
+            options-summary  ]  )  )
+   (System/exit exit-code)  )
+
+(defn main-loop
+   [  {  {  :keys [help multiplier]  } :options
+         :keys [arguments errors summary]  }  ]
+   (if help   (usage 0 summary errors))
+   (if errors (usage 1 summary errors))
+   (tracer world :res multiplier))
+
 (defn -main
    [& args]
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
-   (tracer world)  )
+   (main-loop (parse-opts args cli-options))  )
