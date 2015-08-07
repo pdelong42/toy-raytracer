@@ -123,6 +123,10 @@
 (defmulti normal
    (fn [surface point] (type surface))  )
 
+(defmethod normal Plane
+   [plane point]
+   (unit-vector (toPoint (take 3 (equation plane)))))
+
 (defmethod normal Sphere
    [sphere point]
    (unit-vector (displacement (center sphere) point))  )
