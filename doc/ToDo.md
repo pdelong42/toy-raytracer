@@ -38,6 +38,8 @@
    width-by-height args, rather than this business with a multiplier
    and a square or fixed shape
 
+ - [ ] implement a primitive for polygon/wireframe mesh (?)
+
  - [X] Finish laying-out the original scene from the book.
 
  - [X] Find out why x and y axes are transposed, and fix.
