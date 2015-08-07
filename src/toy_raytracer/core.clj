@@ -83,9 +83,8 @@
 
 (extend Plane
    SurfaceProperties
-   (merge surface-properties
-      {  :to-surface (fn [plane]          (:surface plane))
-         :color      (fn [plane] (color (to-surface plane)))  }  )
+   {  :to-surface (fn [plane]          (:surface plane))
+      :color      (fn [plane] (color (to-surface plane)))  }
    PlaneProperties
    {  :to-plane (fn [plane] plane)
       :equation (fn [plane] (map [:a :b :c :d] plane))  }  )
