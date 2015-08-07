@@ -75,6 +75,21 @@
 
 (extend Surface SurfaceProperties surface-properties)
 
+(defrecord Plane [surface a b c d])
+
+(defprotocol PlaneProperties
+   (to-plane [_])
+   (equation [_])  )
+
+(extend Plane
+   SurfaceProperties
+   (merge surface-properties
+      {  :to-surface (fn [plane]          (:surface plane))
+         :color      (fn [plane] (color (to-surface plane)))  }  )
+   PlaneProperties
+   {  :to-plane (fn [plane] plane)
+      :equation (fn [plane] (map [:a :b :c :d] plane))  }  )
+
 (defrecord Sphere [surface radius center])
 
 (defprotocol SphereProperties
@@ -90,7 +105,7 @@
 (extend Sphere
    SurfaceProperties
    (merge surface-properties
-      {  :to-surface (fn [sphere] (:surface sphere))
+      {  :to-surface (fn [sphere]          (:surface sphere))
          :color      (fn [sphere] (color (to-surface sphere)))  }  )
    SphereProperties
    sphere-properties  )
