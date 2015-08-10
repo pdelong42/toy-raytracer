@@ -87,7 +87,7 @@
       :color      (fn [plane] (color (to-surface plane)))  }
    PlaneProperties
    {  :to-plane (fn [plane] plane)
-      :equation (fn [plane] (map [:a :b :c :d] plane))  }  )
+      :equation (fn [plane] (next (vals plane)))  }  )
 
 (defrecord Sphere [surface radius center])
 
