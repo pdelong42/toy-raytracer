@@ -134,17 +134,31 @@
 (defmulti intersect
    (fn [surface point ray] (type surface))  )
 
+(defmethod intersect Plane
+   [plane point ray]
+   (let
+      [  n (normal plane)
+         denom (inner ray n)  ]
+      (if
+         (not (zero? denom))
+         (let
+            [  d (/ (- (:d plane) (inner point n)) denom)  ]
+            (toPoint ; footnote 1
+               (map #(+ % (* d %2))
+                  (fromPoint point)
+                  (fromPoint ray)  )  )  )  )  )  )
+
 (defmethod intersect Sphere
    [sphere point ray]
    (let
       [  plumb (displacement point (center sphere))
          n (minroot
-              (square ray)
-              (* 2.0 (inner plumb ray))
-              (- (square plumb) (square (radius sphere)))  )  ]
+               (square ray)
+               (* 2.0 (inner plumb ray))
+               (- (square plumb) (square (radius sphere)))  )  ]
       (if
          (and n (not (neg? n)))
-         (toPoint
+         (toPoint ; footnote 1
             (map #(+ % (* n %2))
                (fromPoint point)
                (fromPoint ray)  )  )  )  )  )
@@ -152,9 +166,6 @@
 (defn lambert
    [surface intersection ray]
    (max 0 (inner ray (normal surface intersection)))  )
-
-; ToDo: in the function below, I have to remember to map the intersection
-; points to their (scalar) distances, for subsequent sorting...
 
 (defn first-hit
    [world point ray]
@@ -263,3 +274,7 @@
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
    (main-loop (parse-opts args cli-options))  )
+
+; Footnote 1:
+;
+; This needs to be abstracted out into its own function(s).
