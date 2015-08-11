@@ -225,7 +225,7 @@
 
 (defn defplane
    [a b c d color]
-   (apply ->Plane
+   (->Plane
       (defsurface color)
       (->Point a b c) d  )  )
 
@@ -238,7 +238,8 @@
 
 (def world
    (concat
-      [  (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
+      [  (defplane 1.0 0.0 0.0 -600.0 [1.0 1.0 0.0])
+         (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
          (defsphere 200.0 [-80.0 -150.0 -1200.0] [0.0 0.7 0.0])
          (defsphere 200.0 [ 70.0 -100.0 -1200.0] [0.0 0.0 0.9])  ]
       (for
