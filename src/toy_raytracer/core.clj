@@ -75,19 +75,17 @@
 
 (extend Surface SurfaceProperties surface-properties)
 
-(defrecord Plane [surface a b c d])
+(defrecord Plane [surface normal magnitude])
 
 (defprotocol PlaneProperties
-   (to-plane [_])
-   (equation [_])  )
+   (to-plane [_])  )
 
 (extend Plane
    SurfaceProperties
    {  :to-surface (fn [plane]          (:surface plane))
       :color      (fn [plane] (color (to-surface plane)))  }
    PlaneProperties
-   {  :to-plane (fn [plane] plane)
-      :equation (fn [plane] (next (vals plane)))  }  )
+   {  :to-plane (fn [plane] plane)  }  )
 
 (defrecord Sphere [surface radius center])
 
@@ -125,7 +123,7 @@
 
 (defmethod normal Plane
    [plane point]
-   (unit-vector (toPoint (take 3 (equation plane)))))
+   (unit-vector (toPoint (:normal plane))))
 
 (defmethod normal Sphere
    [sphere point]
@@ -137,12 +135,12 @@
 (defmethod intersect Plane
    [plane point ray]
    (let
-      [  n (normal plane)
+      [  n (:normal plane)
          denom (inner ray n)  ]
       (if
          (not (zero? denom))
          (let
-            [  d (/ (- (:d plane) (inner point n)) denom)  ]
+            [  d (/ (- (:magnitude plane) (inner point n)) denom)  ]
             (toPoint ; footnote 1
                (map #(+ % (* d %2))
                   (fromPoint point)
@@ -221,10 +219,20 @@
             (for [y sideseq x sideseq]
                (join \space (vals (color-at world x y)))  )  )  )  )  )
 
+(defn defsurface
+   [color]
+   (->Surface (apply ->Color color)))
+
+(defn defplane
+   [a b c d color]
+   (apply ->Plane
+      (defsurface color)
+      (->Point a b c) d  )  )
+
 (defn defsphere
    [radius center color]
    (->Sphere
-      (->Surface (apply ->Color color))
+      (defsurface color)
       radius
       (apply ->Point center)  )  )
 
