@@ -1,3 +1,5 @@
+ - [ ] write tests for plane primitive, and a shortcut defplane func;
+
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
 
