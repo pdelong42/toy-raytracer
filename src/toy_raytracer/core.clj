@@ -141,10 +141,12 @@
          (not (zero? denom))
          (let
             [  d (/ (- 1.0 (inner point n)) denom)  ]
-            (toPoint ; footnote 1
-               (map #(+ % (* d %2))
-                  (fromPoint point)
-                  (fromPoint ray)  )  )  )  )  )  )
+            (if
+               (and d (not (neg? d)))
+               (toPoint ; footnote 1
+                  (map #(+ % (* d %2))
+                     (fromPoint point)
+                     (fromPoint ray)  )  )  )  )  )  )  )
 
 (defmethod intersect Sphere
    [sphere point ray]
@@ -236,9 +238,9 @@
       radius
       (apply ->Point center)  )  )
 
-;      (defplane 1.0 0.0 0.0 600.0 [1.0 1.0 0.0])
-;      (defplane 0.0 1.0 0.0 600.0 [0.0 1.0 1.0])
 ;      (defplane 0.0 1.0 0.0  -600.0 [0.0 1.0 1.0])
+;      (defplane 1.0 0.0 0.0   600.0 [1.0 1.0 0.0])
+;      (defplane 0.0 1.0 0.0   600.0 [0.0 1.0 1.0])
 ;      (defplane 0.0 0.0 1.0 -1800.0 [1.0 1.0 1.0])
 ;      (defplane 0.0 0.0 -1.0 6000.0 [1.0 0.0 1.0])
 

@@ -1,3 +1,8 @@
+ - [ ] fix the bug with the plane intersection algorithm; every test
+   results in two possible intersection points, one with the intended
+   plane, and another with a phantom plane that is symmetrically
+   opposite the first through the origin (not through the viewpoint);
+
  - [ ] write tests for plane primitive, and a shortcut defplane func;
 
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
