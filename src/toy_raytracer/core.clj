@@ -75,7 +75,7 @@
 
 (extend Surface SurfaceProperties surface-properties)
 
-(defrecord Plane [surface normal magnitude])
+(defrecord Plane [surface normal])
 
 (defprotocol PlaneProperties
    (to-plane [_])  )
@@ -140,11 +140,13 @@
       (if
          (not (zero? denom))
          (let
-            [  d (/ (- (:magnitude plane) (inner point n)) denom)  ]
-            (toPoint ; footnote 1
-               (map #(+ % (* d %2))
-                  (fromPoint point)
-                  (fromPoint ray)  )  )  )  )  )  )
+            [  d (/ (- 1.0 (inner point n)) denom)  ]
+            (if
+               (and d (not (neg? d)))
+               (toPoint ; footnote 1
+                  (map #(+ % (* d %2))
+                     (fromPoint point)
+                     (fromPoint ray)  )  )  )  )  )  )  )
 
 (defmethod intersect Sphere
    [sphere point ray]
@@ -227,7 +229,7 @@
    [a b c d color]
    (->Plane
       (defsurface color)
-      (->Point a b c) d  )  )
+      (apply ->Point (map #(/ % d) [a b c]))  )  )
 
 (defn defsphere
    [radius center color]
@@ -238,7 +240,10 @@
 
 (def world
    (concat
-      [  (defplane 1.0 0.0 0.0 -600.0 [1.0 1.0 0.0])
+      [  ; this space intentionally blank
+         (defplane 1.0 0.0 0.0   600.0 [1.0 1.0 0.0])
+         (defplane 0.0 1.0 0.0   600.0 [0.0 1.0 1.0])
+         (defplane 0.0 0.0 1.0 -6000.0 [1.0 0.0 1.0])
          (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
          (defsphere 200.0 [-80.0 -150.0 -1200.0] [0.0 0.7 0.0])
          (defsphere 200.0 [ 70.0 -100.0 -1200.0] [0.0 0.0 0.9])  ]
