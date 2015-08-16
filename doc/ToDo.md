@@ -1,7 +1,7 @@
+ - [ ] write tests for plane primitive, and a shortcut defplane func;
+
  - [ ] I still find first-hit to be rather ugly.  I'd like to abstract
    out bits of it, and make it easier to read.
-
- - [ ] Next I should implement a "plane" primitive.
 
  - [ ] Implement CSG (constructive solid geometry).  This probably
    entails converting the scene description into a hierarchy, rather
@@ -38,6 +38,8 @@
    width-by-height args, rather than this business with a multiplier
    and a square or fixed shape
 
+ - [ ] implement a primitive for polygon/wireframe mesh (?)
+
  - [X] Finish laying-out the original scene from the book.
 
  - [X] Find out why x and y axes are transposed, and fix.
@@ -56,3 +58,10 @@
 
  - [X] add a command-line interface for passing options (particularly
    for passing resolution arguments)
+
+ - [X] Next I should implement a "plane" primitive.
+
+ - [X] fix the bug with the plane intersection algorithm; every test
+   results in two possible intersection points, one with the intended
+   plane, and another with a phantom plane that is symmetrically
+   opposite the first through the origin (not through the viewpoint);

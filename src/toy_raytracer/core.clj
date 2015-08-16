@@ -75,6 +75,18 @@
 
 (extend Surface SurfaceProperties surface-properties)
 
+(defrecord Plane [surface normal])
+
+(defprotocol PlaneProperties
+   (to-plane [_])  )
+
+(extend Plane
+   SurfaceProperties
+   {  :to-surface (fn [plane]          (:surface plane))
+      :color      (fn [plane] (color (to-surface plane)))  }
+   PlaneProperties
+   {  :to-plane (fn [plane] plane)  }  )
+
 (defrecord Sphere [surface radius center])
 
 (defprotocol SphereProperties
@@ -90,7 +102,7 @@
 (extend Sphere
    SurfaceProperties
    (merge surface-properties
-      {  :to-surface (fn [sphere] (:surface sphere))
+      {  :to-surface (fn [sphere]          (:surface sphere))
          :color      (fn [sphere] (color (to-surface sphere)))  }  )
    SphereProperties
    sphere-properties  )
@@ -109,6 +121,10 @@
 (defmulti normal
    (fn [surface point] (type surface))  )
 
+(defmethod normal Plane
+   [plane point]
+   (unit-vector (toPoint (:normal plane))))
+
 (defmethod normal Sphere
    [sphere point]
    (unit-vector (displacement (center sphere) point))  )
@@ -116,17 +132,33 @@
 (defmulti intersect
    (fn [surface point ray] (type surface))  )
 
+(defmethod intersect Plane
+   [plane point ray]
+   (let
+      [  n (:normal plane)
+         denom (inner ray n)  ]
+      (if
+         (not (zero? denom))
+         (let
+            [  d (/ (- 1.0 (inner point n)) denom)  ]
+            (if
+               (and d (not (neg? d)))
+               (toPoint ; footnote 1
+                  (map #(+ % (* d %2))
+                     (fromPoint point)
+                     (fromPoint ray)  )  )  )  )  )  )  )
+
 (defmethod intersect Sphere
    [sphere point ray]
    (let
       [  plumb (displacement point (center sphere))
          n (minroot
-              (square ray)
-              (* 2.0 (inner plumb ray))
-              (- (square plumb) (square (radius sphere)))  )  ]
+               (square ray)
+               (* 2.0 (inner plumb ray))
+               (- (square plumb) (square (radius sphere)))  )  ]
       (if
          (and n (not (neg? n)))
-         (toPoint
+         (toPoint ; footnote 1
             (map #(+ % (* n %2))
                (fromPoint point)
                (fromPoint ray)  )  )  )  )  )
@@ -134,9 +166,6 @@
 (defn lambert
    [surface intersection ray]
    (max 0 (inner ray (normal surface intersection)))  )
-
-; ToDo: in the function below, I have to remember to map the intersection
-; points to their (scalar) distances, for subsequent sorting...
 
 (defn first-hit
    [world point ray]
@@ -192,16 +221,30 @@
             (for [y sideseq x sideseq]
                (join \space (vals (color-at world x y)))  )  )  )  )  )
 
+(defn defsurface
+   [color]
+   (->Surface (apply ->Color color)))
+
+(defn defplane
+   [a b c d color]
+   (->Plane
+      (defsurface color)
+      (apply ->Point (map #(/ % d) [a b c]))  )  )
+
 (defn defsphere
    [radius center color]
    (->Sphere
-      (->Surface (apply ->Color color))
+      (defsurface color)
       radius
       (apply ->Point center)  )  )
 
 (def world
    (concat
-      [  (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
+      [  ; this space intentionally blank
+         (defplane 1.0 0.0 0.0   600.0 [1.0 1.0 0.0])
+         (defplane 0.0 1.0 0.0   600.0 [0.0 1.0 1.0])
+         (defplane 0.0 0.0 1.0 -6000.0 [1.0 0.0 1.0])
+         (defsphere 200.0 [  0.0 -300.0 -1200.0] [0.8 0.0 0.0])
          (defsphere 200.0 [-80.0 -150.0 -1200.0] [0.0 0.7 0.0])
          (defsphere 200.0 [ 70.0 -100.0 -1200.0] [0.0 0.0 0.9])  ]
       (for
@@ -245,3 +288,7 @@
    ;; work around dangerous default behaviour in Clojure
    (alter-var-root #'*read-eval* (constantly false))
    (main-loop (parse-opts args cli-options))  )
+
+; Footnote 1:
+;
+; This needs to be abstracted out into its own function(s).
