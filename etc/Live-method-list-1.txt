@@ -1,0 +1,162 @@
+Live method list
+
++----------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------+--------------------+
+|                                                                 Method                                                                 |      Time (ms)      |  Own Time (ms)  |  Invocation Count  |
++----------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------+--------------------+
+|  clojure.lang.RestFn.applyTo(ISeq) RestFn.java                                                                                         |     443,900   99 %  |              0  |                 1  |
+|  clojure.lang.RestFn.invoke(Object, Object, Object) RestFn.java                                                                        |  >= 443,900   99 %  |           ~  0  |              >= 1  |
+|  clojure.string$join.invoke(Object, Object) string.clj                                                                                 |     443,900   99 %  |         63,388  |           217,768  |
+|  toy_raytracer.core.main(String[])                                                                                                     |     443,900   99 %  |              0  |                 1  |
+|  toy_raytracer.core$_main.doInvoke(Object) core.clj                                                                                    |     443,900   99 %  |              0  |                 1  |
+|  toy_raytracer.core$main_loop.invoke(Object) core.clj                                                                                  |     443,900   99 %  |              0  |                 1  |
+|  toy_raytracer.core$tracer.doInvoke(Object, Object) core.clj                                                                           |     443,900   99 %  |              0  |                 1  |
+|  toy_raytracer.core$inner.invoke(Object, Object) core.clj                                                                              |     330,431   74 %  |         56,835  |        26,736,393  |
+|  clojure.core$reduce.invoke(Object, Object) core.clj                                                                                   |     267,600   60 %  |        267,600  |        26,736,393  |
+|  clojure.lang.Cons.next() Cons.java                                                                                                    |     125,117   28 %  |         90,466  |        88,681,356  |
+|  toy_raytracer.core$toPoint.invoke(Object) core.clj                                                                                    |      68,180   15 %  |         21,331  |        10,139,638  |
+|  clojure.core$map$fn__4211.invoke() core.clj                                                                                           |   >= 61,558   14 %  |      ~  61,294  |     >= 61,558,323  |
+|  toy_raytracer.core$square.invoke(Object) core.clj                                                                                     |   >= 59,225   13 %  |       ~  2,165  |      >= 5,911,267  |
+|  clojure.lang.RT.boundedLength(ISeq, int) RT.java                                                                                      |      51,910   12 %  |          9,192  |        10,118,058  |
+|  toy_raytracer.core$color_at$fn__557.invoke(Object) core.clj                                                                           |      49,348   11 %  |            887  |           653,301  |
+|  toy_raytracer.core$lambert.invoke(Object, Object, Object) core.clj                                                                    |      46,417   10 %  |            669  |           653,301  |
+|  toy_raytracer.core$magnitude.invoke(Object) core.clj                                                                                  |      43,321   10 %  |          1,936  |         3,218,804  |
+|  clojure.lang.MultiFn.invoke(Object, Object) MultiFn.java                                                                              |      37,024    8 %  |          1,002  |           653,301  |
+|  toy_raytracer.core$unit_vector$fn__342.invoke(Object) core.clj                                                                        |      36,631    8 %  |          1,497  |         2,613,204  |
+|  clojure.core$concat$fn__3923.invoke() core.clj                                                                                        |   >= 32,416    7 %  |       ~  5,086  |      >= 3,028,197  |
+|  toy_raytracer.core$fn__526.invoke(Object, Object) core.clj                                                                            |      23,318    5 %  |          1,578  |           413,955  |
+|  clojure.core$rest.invoke(Object) core.clj                                                                                             |   >= 19,356    4 %  |      ~  19,356  |     >= 19,353,294  |
+|  toy_raytracer.core$fn__524.invoke(Object, Object) core.clj                                                                            |      12,426    3 %  |            594  |           239,346  |
+|  toy_raytracer.core$distance.invoke(Object, Object) core.clj                                                                           |      10,883    2 %  |          1,235  |           605,600  |
+|  toy_raytracer.core$first_hit$closest_hit__552.invoke(Object) core.clj                                                                 |       6,090    1 %  |            318  |           217,767  |
+|  toy_raytracer.core.Point.seq() core.clj                                                                                               |    >= 5,685    1 %  |       ~  3,876  |      >= 5,688,912  |
+|  clojure.core$sort.invoke(Object) core.clj                                                                                             |       5,006    1 %  |          5,006  |           217,767  |
+|  clojure.core$seq.invoke(Object) core.clj                                                                                              |    >= 4,701    1 %  |       ~  1,402  |        >= 268,954  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572.invoke() core.clj                                             |    >= 4,700    1 %  |         ~  0.1  |              >= 4  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572$fn__573.invoke() core.clj                                     |    >= 4,700    1 %  |          ~  32  |              >= 4  |
+|  toy_raytracer.core$color_at.invoke(Object, Object, Object) core.clj                                                                   |    >= 4,248    1 %  |           ~  2  |            >= 104  |
+|  clojure.lang.Ratio.decimalValue(MathContext) Ratio.java                                                                               |       3,986    1 %  |          3,986  |           391,539  |
+|  toy_raytracer.core$first_hit.invoke(Object, Object, Object) core.clj                                                                  |    >= 3,701    1 %  |         ~  0.9  |            >= 104  |
+|  clojure.core$reduce.invoke(Object, Object, Object) core.clj                                                                           |    >= 3,683    1 %  |          ~  21  |            >= 104  |
+|  toy_raytracer.core$first_hit$shoot_object__550.invoke(Object, Object) core.clj                                                        |    >= 3,660    1 %  |          ~  30  |          >= 3,755  |
+|  clojure.lang.MultiFn.invoke(Object, Object, Object) MultiFn.java                                                                      |    >= 3,476    1 %  |          ~  82  |          >= 3,755  |
+|  clojure.core$assoc.invoke(Object, Object, Object) core.clj                                                                            |    >= 3,185    1 %  |       ~  3,185  |      >= 3,198,497  |
+|  toy_raytracer.core$fn__543.invoke(Object, Object, Object) core.clj                                                                    |    >= 3,158    1 %  |          ~  49  |          >= 3,443  |
+|  clojure.lang.MultiFn.getFn(Object) MultiFn.java                                                                                       |    >= 2,733    1 %  |       ~  2,733  |      >= 2,739,756  |
+|  toy_raytracer.core$minroot.invoke(Object, Object, Object) core.clj                                                                    |    >= 1,328    0 %  |         ~  813  |      >= 1,330,722  |
+|  toy_raytracer.core$fromPoint.invoke(Object) core.clj                                                                                  |    >= 1,128    0 %  |          ~  65  |         >= 26,400  |
+|  clojure.lang.RT.intCast(Object) RT.java                                                                                               |       1,017    0 %  |          1,017  |           660,263  |
+|  clojure.core$dissoc.invoke(Object, Object) core.clj                                                                                   |         817    0 %  |            817  |           217,767  |
+|  clojure.lang.Numbers.multiply(long, Object) Numbers.java                                                                              |         806    0 %  |            806  |           653,301  |
+|  clojure.lang.Numbers.max(double, Object) Numbers.java                                                                                 |         696    0 %  |            696  |           653,301  |
+|  clojure.core$apply.invoke(Object, Object) core.clj                                                                                    |      >= 645    0 %  |         ~  162  |          >= 4,641  |
+|  clojure.lang.RT.nth(Object, int, Object) RT.java                                                                                      |         499    0 %  |            499  |           435,534  |
+|  toy_raytracer.core.Color.seq() core.clj                                                                                               |         497    0 %  |            482  |           435,534  |
+|  clojure.core$keys.invoke(Object) core.clj                                                                                             |         440    0 %  |            440  |           217,767  |
+|  toy_raytracer.core$unit_vector.invoke(Object) core.clj                                                                                |      >= 402    0 %  |           ~  1  |            >= 416  |
+|  clojure.core$type.invoke(Object) core.clj                                                                                             |      >= 398    0 %  |         ~  385  |        >= 413,229  |
+|  toy_raytracer.core$displacement.invoke(Object, Object) core.clj                                                                       |      >= 369    0 %  |          ~  50  |          >= 3,882  |
+|  toy_raytracer.core$fn__514.invoke(Object) core.clj                                                                                    |         363    0 %  |            217  |           137,985  |
+|  clojure.lang.Numbers.multiply(Object, Object) Numbers.java                                                                            |      >= 362    0 %  |         ~  362  |        >= 380,453  |
+|  clojure.lang.APersistentMap.invoke(Object) APersistentMap.java                                                                        |         324    0 %  |            324  |           217,767  |
+|  java.lang.Integer.valueOf(int) Integer.java                                                                                           |         323    0 %  |            323  |         1,198,114  |
+|  toy_raytracer.core$fn__518$fn__519.invoke(Object, Object) core.clj                                                                    |         276    0 %  |            267  |           653,301  |
+|  toy_raytracer.core$fn__241$__GT_Color__259.invoke(Object, Object, Object) core.clj                                                    |         235    0 %  |            107  |           217,767  |
+|  clojure.lang.RT.intCast(long) RT.java                                                                                                 |         229    0 %  |            229  |         1,313,564  |
+|  clojure.lang.Numbers.add(Object, Object) Numbers.java                                                                                 |      >= 223    0 %  |         ~  223  |        >= 216,617  |
+|  clojure.lang.PersistentVector.seq() PersistentVector.java                                                                             |      >= 207    0 %  |         ~  207  |        >= 216,631  |
+|  toy_raytracer.core.Plane$reify__405.get(Object) core.clj                                                                              |         205    0 %  |            205  |           892,647  |
+|  toy_raytracer.core$fn__536.invoke(Object, Object, Object) core.clj                                                                    |      >= 202    0 %  |           ~  3  |            >= 312  |
+|  java.lang.Double.valueOf(double) Double.java                                                                                          |      >= 201    0 %  |         ~  201  |        >= 183,862  |
+|  toy_raytracer.core$unit_vector$fn__342.<init>(Object) core.clj                                                                        |         177    0 %  |            177  |           871,068  |
+|  clojure.core$first.invoke(Object) core.clj                                                                                            |      >= 174    0 %  |         ~  174  |        >= 118,322  |
+|  clojure.lang.RT.doubleCast(Object) RT.java                                                                                            |      >= 172    0 %  |         ~  172  |      >= 1,003,046  |
+|  toy_raytracer.core$fn__528$fn__529.invoke(Object, Object, Object) core.clj                                                            |      >= 142    0 %  |          ~  76  |        >= 151,073  |
+|  clojure.core$chunk_cons.invoke(Object, Object) core.clj                                                                               |      >= 142    0 %  |         ~  142  |        >= 151,072  |
+|  toy_raytracer.core$fn__543$fn__544.invoke(Object, Object) core.clj                                                                    |      >= 139    0 %  |         ~  136  |        >= 377,694  |
+|  clojure.core$map.invoke(Object, Object, Object) core.clj                                                                              |      >= 139    0 %  |         ~  139  |        >= 151,086  |
+|  clojure.lang.Numbers.isNeg(Object) Numbers.java                                                                                       |         136    0 %  |            136  |           183,688  |
+|  clojure.lang.MapEntry.<init>(Object, Object) MapEntry.java                                                                            |      >= 131    0 %  |         ~  131  |        >= 151,092  |
+|  toy_raytracer.core$fn__265$__GT_Point__283.invoke(Object, Object, Object) core.clj                                                    |      >= 128    0 %  |          ~  81  |        >= 151,075  |
+|  toy_raytracer.core.Color.<init>(Object, Object, Object) core.clj                                                                      |         127    0 %  |             89  |           217,767  |
+|  toy_raytracer.core$fn__536$fn__537.invoke(Object, Object) core.clj                                                                    |      >= 124    0 %  |          ~  88  |        >= 183,843  |
+|  clojure.lang.Numbers.minus(double, Object) Numbers.java                                                                               |         123    0 %  |            123  |           652,083  |
+|  clojure.core$vals.invoke(Object) core.clj                                                                                             |      >= 122    0 %  |         ~  116  |         >= 26,608  |
+|  clojure.lang.Numbers.divide(Object, Object) Numbers.java                                                                              |      >= 111    0 %  |         ~  111  |        >= 118,308  |
+|  clojure.lang.RT.vector(Object[]) RT.java                                                                                              |      >= 111    0 %  |         ~  111  |        >= 118,326  |
+|  clojure.lang.Numbers.divide(double, Object) Numbers.java                                                                              |         110    0 %  |            110  |           652,083  |
+|  clojure.lang.Numbers.minus(Object, Object) Numbers.java                                                                               |      >= 108    0 %  |         ~  108  |         >= 15,090  |
+|  toy_raytracer.core$fn__512.invoke(Object) core.clj                                                                                    |         108    0 %  |             77  |           137,985  |
+|  clojure.core$concat.invoke(Object, Object) core.clj                                                                                   |      >= 102    0 %  |         ~  102  |        >= 118,313  |
+|  clojure.core$chunk_first.invoke(Object) core.clj                                                                                      |      >= 100    0 %  |         ~  100  |        >= 118,322  |
+|  toy_raytracer.core$fn__536$fn__537.<init>(double) core.clj                                                                            |          90    0 %  |             90  |           421,912  |
+|  java.math.BigDecimal.doubleValue() BigDecimal.java                                                                                    |          80    0 %  |             80  |           391,539  |
+|  clojure.core$cons.invoke(Object, Object) core.clj                                                                                     |       >= 72    0 %  |          ~  72  |         >= 85,538  |
+|  clojure.lang.Numbers$RatioOps.combine(Numbers$Ops) Numbers.java                                                                       |          71    0 %  |             71  |           391,539  |
+|  clojure.core$chunk_append.invoke(Object, Object) core.clj                                                                             |          70    0 %  |             70  |           217,767  |
+|  clojure.lang.Numbers$DoubleOps.negate(Number) Numbers.java                                                                            |       >= 64    0 %  |          ~  64  |         >= 85,546  |
+|  toy_raytracer.core.Surface$reify__352.get(Object) core.clj                                                                            |          55    0 %  |             55  |           217,767  |
+|  toy_raytracer.core$first_hit$shoot_object__550.<init>(Object, Object) core.clj                                                        |          51    0 %  |             51  |           217,767  |
+|  toy_raytracer.core$fn__543$fn__544.<init>(Object) core.clj                                                                            |          47    0 %  |             47  |           183,688  |
+|  toy_raytracer.core$color_at$fn__557.<init>(Object, Object, Object) core.clj                                                           |          47    0 %  |             47  |           217,767  |
+|  toy_raytracer.core.Point.<init>(Object, Object, Object) core.clj                                                                      |       >= 47    0 %  |          ~  31  |         >= 52,769  |
+|  toy_raytracer.core$first_hit$closest_hit__552.<init>() core.clj                                                                       |          46    0 %  |             46  |           217,767  |
+|  clojure.lang.Numbers.isZero(Object) Numbers.java                                                                                      |       >= 45    0 %  |          ~  45  |         >= 52,769  |
+|  clojure.core$map.invoke(Object, Object) core.clj                                                                                      |       >= 42    0 %  |          ~  42  |         >= 52,772  |
+|  clojure.lang.Numbers.add(Object, double) Numbers.java                                                                                 |       >= 42    0 %  |          ~  42  |        >= 225,411  |
+|  clojure.lang.PersistentVector$ChunkedSeq.next() PersistentVector.java                                                                 |       >= 38    0 %  |          ~  38  |         >= 52,780  |
+|  toy_raytracer.core.Color.<init>(Object, Object, Object, Object, Object) core.clj                                                      |          38    0 %  |             38  |           217,767  |
+|  clojure.lang.LazySeq.<init>(IFn) LazySeq.java                                                                                         |       >= 36    0 %  |          ~  36  |         >= 52,772  |
+|  toy_raytracer.core$fn__319$G__288__324.invoke(Object) core.clj                                                                        |       >= 34    0 %  |          ~  23  |          >= 7,764  |
+|  clojure.core$chunk_rest.invoke(Object) core.clj                                                                                       |       >= 33    0 %  |          ~  33  |         >= 52,772  |
+|  toy_raytracer.core$fn__297$G__292__302.invoke(Object) core.clj                                                                        |       >= 32    0 %  |           ~  8  |          >= 7,764  |
+|  toy_raytracer.core.Sphere$reify__448.get(Object) core.clj                                                                             |          31    0 %  |             31  |           137,985  |
+|  clojure.lang.Numbers.min(double, double) Numbers.java                                                                                 |       >= 29    0 %  |          ~  29  |         >= 44,013  |
+|  clojure.lang.Numbers.minus(Object) Numbers.java                                                                                       |       >= 23    0 %  |          ~  23  |         >= 88,026  |
+|  toy_raytracer.core$fn__495$G__464__500.invoke(Object) core.clj                                                                        |       >= 22    0 %  |           ~  9  |          >= 3,539  |
+|  toy_raytracer.core$fn__330.invoke(Object) core.clj                                                                                    |       >= 22    0 %  |          ~  18  |          >= 7,764  |
+|  toy_raytracer.core$fn__308$G__290__313.invoke(Object) core.clj                                                                        |       >= 20    0 %  |           ~  9  |          >= 7,764  |
+|  toy_raytracer.core$fn__473$G__466__478.invoke(Object) core.clj                                                                        |       >= 19    0 %  |           ~  9  |          >= 3,444  |
+|  toy_raytracer.core.Plane$reify__403.get(Object) core.clj                                                                              |          19    0 %  |             19  |            79,782  |
+|  toy_raytracer.core.Sphere$reify__450.get(Object) core.clj                                                                             |       >= 18    0 %  |          ~  18  |         >= 52,770  |
+|  toy_raytracer.core.Sphere$reify__446.get(Object) core.clj                                                                             |       >= 18    0 %  |          ~  18  |         >= 52,771  |
+|  clojure.lang.AFunction.<init>() AFunction.java                                                                                        |       >= 16    0 %  |          ~  16  |         >= 20,008  |
+|  toy_raytracer.core.Point.<init>(Object, Object, Object, Object, Object) core.clj                                                      |       >= 16    0 %  |          ~  16  |         >= 52,769  |
+|  toy_raytracer.core.Point$reify__270.get(Object) core.clj                                                                              |       >= 16    0 %  |          ~  15  |         >= 52,768  |
+|  toy_raytracer.core.Point$reify__272.get(Object) core.clj                                                                              |       >= 15    0 %  |          ~  14  |         >= 52,768  |
+|  toy_raytracer.core.Point$reify__274.get(Object) core.clj                                                                              |       >= 14    0 %  |          ~  14  |         >= 52,768  |
+|  clojure.core$number_QMARK_.invoke(Object) core.clj                                                                                    |       >= 14    0 %  |          ~  14  |         >= 52,774  |
+|  clojure.lang.Numbers$BigIntOps.combine(Numbers$Ops) Numbers.java                                                                      |          12    0 %  |             12  |            43,777  |
+|  clojure.lang.Numbers.multiply(double, Object) Numbers.java                                                                            |       >= 12    0 %  |          ~  12  |         >= 52,771  |
+|  toy_raytracer.core$fn__510.invoke(Object) core.clj                                                                                    |       >= 12    0 %  |           ~  7  |          >= 3,539  |
+|  clojure.lang.Numbers.minus(Object, double) Numbers.java                                                                               |       >= 10    0 %  |          ~  10  |         >= 20,000  |
+|  toy_raytracer.core$fn__332.invoke(Object) core.clj                                                                                    |       >= 10    0 %  |           ~  6  |          >= 7,764  |
+|  clojure.core$chunk_buffer.invoke(Object) core.clj                                                                                     |           9    0 %  |              9  |             6,962  |
+|  toy_raytracer.core$fn__334.invoke(Object) core.clj                                                                                    |        >= 9    0 %  |           ~  5  |          >= 7,764  |
+|  clojure.lang.Util.classOf(Object) Util.java                                                                                           |        >= 9    0 %  |           ~  9  |         >= 20,014  |
+|  toy_raytracer.core$fn__508.invoke(Object) core.clj                                                                                    |        >= 9    0 %  |           ~  6  |          >= 3,444  |
+|  clojure.lang.MethodImplCache.fnFor(Class) MethodImplCache.java                                                                        |        >= 8    0 %  |           ~  8  |         >= 20,005  |
+|  clojure.lang.BigInt.doubleValue() BigInt.java                                                                                         |           8    0 %  |              8  |            43,777  |
+|  clojure.core$class.invoke(Object) core.clj                                                                                            |        >= 8    0 %  |           ~  8  |         >= 20,010  |
+|  clojure.lang.Util.equiv(Object, Object) Util.java                                                                                     |        >= 7    0 %  |           ~  7  |         >= 20,005  |
+|  toy_raytracer.core.Point.meta() core.clj                                                                                              |        >= 6    0 %  |           ~  6  |         >= 20,002  |
+|  clojure.core$chunk.invoke(Object) core.clj                                                                                            |           6    0 %  |              6  |             6,962  |
+|  toy_raytracer.core.Sphere.meta() core.clj                                                                                             |        >= 5    0 %  |           ~  5  |          >= 8,551  |
+|  clojure.lang.RT.count(Object) RT.java                                                                                                 |        >= 5    0 %  |           ~  5  |         >= 20,003  |
+|  clojure.core$chunked_seq_QMARK_.invoke(Object) core.clj                                                                               |        >= 4    0 %  |           ~  4  |         >= 20,004  |
+|  toy_raytracer.core$fn__382$G__364__387.invoke(Object) core.clj                                                                        |        >= 2    0 %  |         ~  0.7  |            >= 208  |
+|  java.lang.ref.Finalizer$FinalizerThread.run() Finalizer.java                                                                          |           1    0 %  |              1  |                 1  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572.<init>(Object, Object, Object, Object) core.clj               |           1    0 %  |              1  |             7,180  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572$fn__573.<init>(Object, Object, Object, int, Object) core.clj  |           1    0 %  |              1  |             6,962  |
+|  toy_raytracer.core$fn__436.invoke(Object) core.clj                                                                                    |        >= 1    0 %  |         ~  0.3  |             >= 72  |
+|  toy_raytracer.core.Plane.meta() core.clj                                                                                              |        >= 1    0 %  |           ~  1  |          >= 1,434  |
+|  java.lang.ref.Reference$ReferenceHandler.run() Reference.java                                                                         |         0.9    0 %  |            0.9  |                 1  |
+|  toy_raytracer.core$fn__371$G__366__376.invoke(Object) core.clj                                                                        |      >= 0.6    0 %  |         ~  0.2  |            >= 104  |
+|  toy_raytracer.core$tracer$iter__563__569.invoke(Object) core.clj                                                                      |         0.4    0 %  |            0.2  |               218  |
+|  toy_raytracer.core$fn__395.invoke(Object) core.clj                                                                                    |      >= 0.2    0 %  |         ~  0.1  |            >= 104  |
+|  toy_raytracer.core$fn__434.invoke(Object) core.clj                                                                                    |      >= 0.2    0 %  |         ~  0.1  |             >= 72  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570.<init>(Object, Object, Object, Object) core.clj                                      |         0.1    0 %  |            0.1  |               218  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571.<init>(Object, Object) core.clj                                       |         0.1    0 %  |            0.1  |               218  |
+|  toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571.invoke(Object) core.clj                                               |       < 0.1    0 %  |          < 0.1  |              >= 4  |
++----------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------+--------------------+
+
+Generated by YourKit Java Profiler 2015 build 15072 August 26, 2015 09:08:44 AM

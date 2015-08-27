@@ -1,0 +1,79 @@
+99 toy_raytracer.core.main(String[])                                                                                                     
+99 toy_raytracer.core$_main.doInvoke(Object) core.clj                                                                                    
+99 toy_raytracer.core$main_loop.invoke(Object) core.clj                                                                                  
+99 toy_raytracer.core$tracer.doInvoke(Object, Object) core.clj                                                                           
+74 toy_raytracer.core$inner.invoke(Object, Object) core.clj                                                                              
+15 toy_raytracer.core$toPoint.invoke(Object) core.clj                                                                                    
+13 toy_raytracer.core$square.invoke(Object) core.clj                                                                                     
+11 toy_raytracer.core$color_at$fn__557.invoke(Object) core.clj                                                                           
+10 toy_raytracer.core$lambert.invoke(Object, Object, Object) core.clj                                                                    
+10 toy_raytracer.core$magnitude.invoke(Object) core.clj                                                                                  
+08 toy_raytracer.core$unit_vector$fn__342.invoke(Object) core.clj                                                                        
+05 toy_raytracer.core$fn__526.invoke(Object, Object) core.clj                                                                            
+03 toy_raytracer.core$fn__524.invoke(Object, Object) core.clj                                                                            
+02 toy_raytracer.core$distance.invoke(Object, Object) core.clj                                                                           
+01 toy_raytracer.core$first_hit$closest_hit__552.invoke(Object) core.clj                                                                 
+01 toy_raytracer.core.Point.seq() core.clj                                                                                               
+01 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572.invoke() core.clj                                             
+01 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572$fn__573.invoke() core.clj                                     
+01 toy_raytracer.core$color_at.invoke(Object, Object, Object) core.clj                                                                   
+01 toy_raytracer.core$first_hit.invoke(Object, Object, Object) core.clj                                                                  
+01 toy_raytracer.core$first_hit$shoot_object__550.invoke(Object, Object) core.clj                                                        
+01 toy_raytracer.core$fn__543.invoke(Object, Object, Object) core.clj                                                                    
+00 toy_raytracer.core$minroot.invoke(Object, Object, Object) core.clj                                                                    
+00 toy_raytracer.core$fromPoint.invoke(Object) core.clj                                                                                  
+00 toy_raytracer.core.Color.seq() core.clj                                                                                               
+00 toy_raytracer.core$unit_vector.invoke(Object) core.clj                                                                                
+00 toy_raytracer.core$displacement.invoke(Object, Object) core.clj                                                                       
+00 toy_raytracer.core$fn__514.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__518$fn__519.invoke(Object, Object) core.clj                                                                    
+00 toy_raytracer.core$fn__241$__GT_Color__259.invoke(Object, Object, Object) core.clj                                                    
+00 toy_raytracer.core.Plane$reify__405.get(Object) core.clj                                                                              
+00 toy_raytracer.core$fn__536.invoke(Object, Object, Object) core.clj                                                                    
+00 toy_raytracer.core$unit_vector$fn__342.<init>(Object) core.clj                                                                        
+00 toy_raytracer.core$fn__528$fn__529.invoke(Object, Object, Object) core.clj                                                            
+00 toy_raytracer.core$fn__543$fn__544.invoke(Object, Object) core.clj                                                                    
+00 toy_raytracer.core$fn__265$__GT_Point__283.invoke(Object, Object, Object) core.clj                                                    
+00 toy_raytracer.core.Color.<init>(Object, Object, Object) core.clj                                                                      
+00 toy_raytracer.core$fn__536$fn__537.invoke(Object, Object) core.clj                                                                    
+00 toy_raytracer.core$fn__512.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__536$fn__537.<init>(double) core.clj                                                                            
+00 toy_raytracer.core.Surface$reify__352.get(Object) core.clj                                                                            
+00 toy_raytracer.core$first_hit$shoot_object__550.<init>(Object, Object) core.clj                                                        
+00 toy_raytracer.core$fn__543$fn__544.<init>(Object) core.clj                                                                            
+00 toy_raytracer.core$color_at$fn__557.<init>(Object, Object, Object) core.clj                                                           
+00 toy_raytracer.core.Point.<init>(Object, Object, Object) core.clj                                                                      
+00 toy_raytracer.core$first_hit$closest_hit__552.<init>() core.clj                                                                       
+00 toy_raytracer.core.Color.<init>(Object, Object, Object, Object, Object) core.clj                                                      
+00 toy_raytracer.core$fn__319$G__288__324.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core$fn__297$G__292__302.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core.Sphere$reify__448.get(Object) core.clj                                                                             
+00 toy_raytracer.core$fn__495$G__464__500.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core$fn__330.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__308$G__290__313.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core$fn__473$G__466__478.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core.Plane$reify__403.get(Object) core.clj                                                                              
+00 toy_raytracer.core.Sphere$reify__450.get(Object) core.clj                                                                             
+00 toy_raytracer.core.Sphere$reify__446.get(Object) core.clj                                                                             
+00 toy_raytracer.core.Point.<init>(Object, Object, Object, Object, Object) core.clj                                                      
+00 toy_raytracer.core.Point$reify__270.get(Object) core.clj                                                                              
+00 toy_raytracer.core.Point$reify__272.get(Object) core.clj                                                                              
+00 toy_raytracer.core.Point$reify__274.get(Object) core.clj                                                                              
+00 toy_raytracer.core$fn__510.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__332.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__334.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__508.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core.Point.meta() core.clj                                                                                              
+00 toy_raytracer.core.Sphere.meta() core.clj                                                                                             
+00 toy_raytracer.core$fn__382$G__364__387.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572.<init>(Object, Object, Object, Object) core.clj               
+00 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571$fn__572$fn__573.<init>(Object, Object, Object, int, Object) core.clj  
+00 toy_raytracer.core$fn__436.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core.Plane.meta() core.clj                                                                                              
+00 toy_raytracer.core$fn__371$G__366__376.invoke(Object) core.clj                                                                        
+00 toy_raytracer.core$tracer$iter__563__569.invoke(Object) core.clj                                                                      
+00 toy_raytracer.core$fn__395.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$fn__434.invoke(Object) core.clj                                                                                    
+00 toy_raytracer.core$tracer$iter__563__569$fn__570.<init>(Object, Object, Object, Object) core.clj                                      
+00 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571.<init>(Object, Object) core.clj                                       
+00 toy_raytracer.core$tracer$iter__563__569$fn__570$iter__565__571.invoke(Object) core.clj                                               
