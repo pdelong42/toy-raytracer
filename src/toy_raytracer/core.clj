@@ -165,7 +165,7 @@
 
 (defn lambert
    [surface intersection ray]
-   (max 0 (inner ray (normal surface intersection)))  )
+   (max 0.0 (inner ray (normal surface intersection)))  )
 
 (defn first-hit
    [world point ray]
